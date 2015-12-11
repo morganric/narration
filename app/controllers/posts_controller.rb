@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!,  except: [:index, :show, :tag, :featured]
+  
 
    require 'embedly'
   require 'json'
@@ -38,6 +40,7 @@ class PostsController < ApplicationController
         @post.summary =  obj[0].description
      end
     end
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
