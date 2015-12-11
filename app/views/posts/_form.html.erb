@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
 <div>
-  <div class="col-md-12">
+  <div class="col-md-12 clearfix row">
       <div class="col-md-6">
   <div class="form-inputs">
     <%= f.input :title, as: :hidden %>
@@ -18,7 +18,8 @@
     <%= f.input :summary, as: :hidden %>
     <%= f.label :image %>
     <%= f.file_field :image %>
-
+    <br/>
+    <br/>
   </div>
     <% if user_signed_in? %>
     <% if current_user.try(:admin?) %>
@@ -41,10 +42,12 @@
   <% end %>
   <% end %>
   </div>
+  </div>
 
-</div>
-  <hr/>
   <div class="form-actions">
+  <hr/>
     <%= f.button :submit %>
   </div>
 <% end %>
+
+
