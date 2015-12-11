@@ -1,3 +1,9 @@
+ENV["DOMAIN_NAME"] = "narration.org"
+ENV["ADMIN_NAME"] = "admin"
+ENV["ADMIN_EMAIL"] = "user@admin.com"
+ENV["ADMIN_PASSWORD"] = "chaneme123"
+ENV["MANDRILL_USERNAME"] = 'morganric+artup@gmail.com'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
