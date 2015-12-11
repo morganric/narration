@@ -21,7 +21,7 @@
     <br/>
     <%= f.input :summary, as: :hidden %>
     
-    <%= f.input :tag_list, as: :hidden %>
+    <%= f.text_field :tag_list, :onfocus=>"this.value='';", :value=> @post.tags.map(&:name).join(","), :class=>"form-control" %>
   </div>
     <% if user_signed_in? %>
     <% if current_user.try(:admin?) %>

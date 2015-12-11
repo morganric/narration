@@ -7,10 +7,16 @@
 	<ul>
 		<% @posts.each do |post| %>
 			<li class="well">
-	        <h3><%= link_to truncate(post.title, :length => 45), post %></h3>
+	        <h3>
+	        	<%= link_to truncate(post.title, :length => 40), post_path(post) %>
+	        	<br/>
+	        <small>
+	        	<%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile) %>
+	        </small>
+	        </h3>
 	        </li>
 	    <% end %>
-
+	    </ul>
 	</div>
 	<div class="col-md-4">
 		

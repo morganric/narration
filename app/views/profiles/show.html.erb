@@ -1,0 +1,78 @@
+
+<div class="col-md-12">
+
+<div class="col-md-4 text-center">
+<br/>
+<p class="">
+  <%= image_tag @profile.image.url(:square), class: "img-responsive img-circle text-center" %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-block" %>
+
+
+</div>
+
+<div class="col-md-8">
+
+<h1>
+  <%= @profile.display_name || @profile.username %>
+</h1>
+<p>
+<ul class="nav nav-tabs" id="myTabs">
+  <li class="active"><a href="#uploads" data-toggle="tab">
+    <i class="glyphicon glyphicon-upload" ></i> Uploads
+  </a></li>
+  <li><a href="#about" data-toggle="tab">
+  <i class="glyphicon glyphicon-info-sign" ></i> About
+  </a></li>
+
+</ul>
+</p>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active in" id="uploads">
+<br/>
+
+
+<ul>
+		<% @profile.user.posts.each do |post| %>
+			<li class="well">
+	        <h3>
+	        	<%= link_to truncate(post.title, :length => 40), post_path(post) %>
+	        	<br/>
+	        <small>
+	        	<%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile) %>
+	        </small>
+	        </h3>
+	        </li>
+	    <% end %>
+</ul>
+
+</div>
+<div class="tab-pane fade " id="about">
+<br/>
+
+<p class="well">
+
+  <%= @profile.bio %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @profile.website %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @profile.twitter %>
+</p>
+
+</div>
+
+</div>
+</div>
+
+
+
+</div>
+
+
