@@ -4,14 +4,15 @@
 
 <div class="col-md-12">
 	<div class="col-md-8">
-	<ul>
+	<ul class="posts">
 		<% @posts.each do |post| %>
 			<li class="well">
+	        <%= link_to image_tag(post.image.url(:thumb), class: "img-thumbnail pull-left", style: "margin-right: 10px;"), post_path(post) %>
 	        <h3>
-	        	<%= link_to truncate(post.title, :length => 40), post_path(post) %>
+	        	<%= link_to truncate(post.title, :length => 40), user_post_path(id: post, user_id: post.user) %>
 	        	<br/>
 	        <small>
-	        	<%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile) %>
+	        	via <%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile) %>
 	        </small>
 	        </h3>
 	        </li>

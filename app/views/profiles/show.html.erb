@@ -37,7 +37,7 @@
 		<% @profile.user.posts.each do |post| %>
 			<li class="well">
 	        <h3>
-	        	<%= link_to truncate(post.title, :length => 40), post_path(post) %>
+	        	<%= link_to truncate(post.title, :length => 40), user_post_path(id: post, user_id: post.user) %>
 	        	<br/>
 	        <small>
 	        	<%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile) %>

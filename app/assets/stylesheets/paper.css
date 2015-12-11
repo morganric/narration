@@ -22,6 +22,12 @@ ul li {
   list-style: none;
 }
 
+
+ul.posts h3 {
+  margin-top: 0px;
+}
+
+
 .jp-flat-audio {
   position: relative;
   font-family: 'Source Sans Pro', sans-serif;
