@@ -6,6 +6,25 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'kaminari'
+gem 'therubyracer'
+# twitter bootstrap css & javascript toolkit
+gem 'twitter-bootswatch-rails', '~> 3.3.4'
+# twitter bootstrap helpers gem, e.g., alerts etc...
+gem 'twitter-bootswatch-rails-helpers'
+gem 'friendly_id', '~> 5.1.0'
+gem "social-buttons", '~> 0.3'
+gem 'zeroclipboard-rails'
+gem 'cloudinary'
+gem 'carrierwave'
+gem  'rails_autolink'
+gem  'redcarpet'
+gem 'albino'
+gem 'nokogiri'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem "embedly"
+gem 'jplayer-rails'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

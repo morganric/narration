@@ -1,0 +1,131 @@
+<div class="col-md-12">
+<div class="col-md-8">
+
+<h1>
+  <%= link_to @post.title, @post.url, target: "_blank" %>
+</h1>
+<hr/>
+
+<div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
+
+        <div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player">
+          <div class="jp-play-control jp-control">
+            <button class="jp-play jp-button" role="button" aria-label="play" tabindex="0"></button>
+          </div>
+          <div class="jp-bar">
+            <div class="jp-seek-bar jp-seek-bar-display"></div>
+            <div class="jp-seek-bar">
+              <div class="jp-play-bar"></div>
+              <div class="jp-details"><span class="jp-title" aria-label="title"></span></div>
+              <div class="jp-timing"><span class="jp-duration" role="timer" aria-label="duration"></span>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="jp-no-solution">
+            Media Player Error<br />
+            Update your browser or Flash plugin
+          </div>
+        </div>
+        <br/>
+          <label class='label hidden label-success'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
+</label>
+<br/><br/>
+
+
+
+  <br/>
+ <% unless @post.summary.blank? %>
+<p class="well">
+  <%= @post.summary %>
+</p>
+<% end %>
+
+</div>
+<div class="col-md-4 text-center">
+  <br/>
+
+  <%= image_tag @post.image.url(:square) %>
+    <br/>
+
+     <br/>
+  <% if user_signed_in? %>
+    <% if current_user.try(:admin?) || current_user = @post.user %>
+  <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-block btn-primary" %>
+  <br/>
+  <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-danger" %>
+
+  <% end %>
+  <% end %>
+</div>  
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$("#jquery_jplayer_audio_1").jPlayer({
+    ready: function(event) {
+      $(this).jPlayer("setMedia", {
+        title: "<%= @post.title %>",
+        m4a: "<%= @post.audio || @post.audio_link %>"
+      });
+    },
+    play: function() { // Avoid multiple jPlayers playing together.
+      $(this).jPlayer("pauseOthers");
+      console.log('play');
+    },
+    timeFormat: {
+      padMin: false
+    },
+    swfPath: "js",
+    supplied: "m4a,oga",
+    cssSelectorAncestor: "#jp_container_audio_1",
+    useStateClassSkin: true,
+    autoBlur: false,
+    smoothPlayBar: true,
+    remainingDuration: true,
+    keyEnabled: true,
+    keyBindings: {
+      // Disable some of the default key controls
+      loop: null,
+      muted: null,
+      volumeUp: null,
+      volumeDown: null
+    },
+    wmode: "window",
+    ended: function() { // Avoid multiple jPlayers playing together.
+      $.ajax("/items/<%= @post.id %>/play");
+      <% unless current_user.blank? %>
+          $.ajax({
+            url: "/listens",
+           
+            data: {"listen": {"item_id": "<%= @post.id %>",
+                    "user_id":"<%= current_user.id %>"}},
+             method: "POST",
+
+          }).done(function() {
+            console.log('listen');
+          });
+     
+          <% end %>
+    }
+  });
+
+
+  
+        $('.fav').on('click', function(e){
+                location.reload();
+        });
+
+
+});
+
+ 
+
+ </script>

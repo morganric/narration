@@ -1,0 +1,50 @@
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
+
+<div>
+  <div class="col-md-12">
+      <div class="col-md-6">
+  <div class="form-inputs">
+    <%= f.input :title, as: :hidden %>
+    <%= f.input :url %>
+    (URL to narrated content)
+    <br/>
+    <%#= f.label :audio %>
+    <%#= f.file_field :audio %>
+    <br/>
+    <%= f.input :audio_link %> (URL to mp3 file)
+    <br/>
+    <br/>
+    <%= f.input :summary, as: :hidden %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+
+  </div>
+    <% if user_signed_in? %>
+    <% if current_user.try(:admin?) %>
+    </div>
+    <div class="col-md-6">
+    <h3>Admin</h3>
+  <div class="form-inputs well">
+    <%= f.input :user_id, as: :hidden %>
+    <%= f.input :slug, as: :hidden %>
+    <%= f.input :plays, as: :hidden %>
+     <%= f.label :banner %>
+    <%= f.file_field :banner %>
+    <br/>
+    <%= f.input :tag_list %>
+    <%= f.input :hidden %>
+    <%= f.input :featured %>
+    <%= f.input :html %>
+    <%= f.input :body %>
+  </div>
+  <% end %>
+  <% end %>
+  </div>
+
+</div>
+  <hr/>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

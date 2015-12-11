@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: narration
+  api_key: '652521851635632'
+  api_secret: EYXn9yrePuwsmASDKr9jrzKyr9M
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: narration
+  api_key: '652521851635632'
+  api_secret: EYXn9yrePuwsmASDKr9jrzKyr9M
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: narration
+  api_key: '652521851635632'
+  api_secret: EYXn9yrePuwsmASDKr9jrzKyr9M
+  enhance_image_tag: true
+  static_image_support: false
