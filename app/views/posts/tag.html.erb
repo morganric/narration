@@ -1,9 +1,12 @@
-
-<h1 class="text-center">Narration.org</h1>
+<h1>
+ Tagged: <%= @tag %>
+</h1>
 <hr/>
 
-<div class="col-md-12">
-	<div class="col-md-8">
+<br/>
+
+<div class="col-md-8">
+	
 	<ul class="posts">
 		<% @posts.each do |post| %>
 			<li class="well">
@@ -26,11 +29,8 @@
 			</h6>
           </li>
 	    <% end %>
-	    </ul>
-	</div>
-	<div class="col-md-4">
-		
-	</div>
+</ul>
+
 
 </div>
 

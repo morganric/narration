@@ -152,9 +152,9 @@ $(document).ready(function(){
   });
 
 
-          $('.jp-play').on('click', function(e){
+        $('.jp-play').on('click', function(e){
           e.preventDefault();
-          $.ajax("/posts/<%= @post.id %>/play");
+          $.post("/posts/<%= @post.id %>/play");
           console.log('play');
 
 
@@ -172,6 +172,7 @@ $(document).ready(function(){
             $('#embed').fadeIn();
             $('#cover').fadeOut();
             $("#jquery_jplayer_audio_1").jPlayer('play');
+            
           
       });
 

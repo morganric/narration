@@ -13,6 +13,13 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def tag
+    @tag = params[:tag]
+
+    @posts = Post.tagged_with(@tag)    
+  end
+
+
   # GET /posts/1
   # GET /posts/1.json
   def show

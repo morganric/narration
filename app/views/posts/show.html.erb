@@ -53,7 +53,7 @@
 </h1>
 
 <p>
-<h5>
+<h6>
   <label class='label label-primary'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
   </label>&nbsp;
    <%  @post.tag_list.each do |tag| %>
@@ -61,7 +61,7 @@
   <i class="glyphicon glyphicon-tag" ></i>&nbsp;
   <%= link_to "##{tag}", tag_path(tag: tag), :class=>"white"%></label>&nbsp;
 <% end %>
-</h5>
+</h6>
 </p>
 <hr/>
 
@@ -127,7 +127,7 @@
 
 <ul class="nav social" style="padding-left:40px;">
   <li style="postion:absolute; top:-6px;"><%= like_button("1440239169528450", send: true, :url => post_url( :id => @post.id)) %></li>
-  <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "lisssdapp") %></li>
+  <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "") %></li>
   <li><%= pinit_button %></li>
   </ul>
 
