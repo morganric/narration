@@ -6,6 +6,7 @@
 <br/>
 <small>via <%= link_to @post.user.name, vanity_profile_url(id: @post.user.profile.slug) , :target => "_blank" %></small>
 </h1>
+
 <h5>
  <label class="label label-primary">
 
@@ -116,7 +117,7 @@ h1 {
 $(document).ready(function(){
 
 
-  $('#cover').prepend('<br/><div class="col-md-12"><div class="well pull-left clearfix"><div class=""></div><div class="pull-left"><h1><i class="icon-control-play i-2x"></i></h1></div><h1><%= truncate(@post.title, length: 20) %> <br/> <small> via <%= @post.user.name %></small></h1></div></div> ')
+  $('#cover').prepend('<br/><div class="col-md-12"><div class="well pull-left clearfix"><div class="pull-left"><h1><i class="icon-control-play i-2x"></i></h1></div><h2><%= truncate(@post.title, length: 30) %> <br/> <small> via <%= @post.user.name %></small></h2></div></div> ')
 
 
   $("#jquery_jplayer_audio_1").jPlayer({
