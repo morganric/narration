@@ -61,24 +61,23 @@
 
      <br/>
   <% if user_signed_in? %>
-    <% if current_user.try(:admin?) || current_user = @post.user %>
-  <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-block btn-primary" %>
-  <br/>
-  <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-danger" %>
-
-  <% end %>
+    <% if current_user.try(:admin?) || current_user == @post.user %>
+      <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-block btn-primary" %>
+      <br/>
+      <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-danger" %>
+    <% end %>
   <% end %>
 
   <br/>
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Share</h3>
+    <h3 class="panel-title">Share </h3>
   </div>
   <div class="panel-body">
 
 <ul class="nav social" style="padding-left:40px;">
-  <li style="postion:absolute; top:-5px;"><%= like_button("1440239169528450", send: true, :url => post_url( :id => @post.id)) %></li>
+  <li style="postion:absolute; top:-6px;"><%= like_button("1440239169528450", send: true, :url => post_url( :id => @post.id)) %></li>
   <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "lisssdapp") %></li>
   <li><%= pinit_button %></li>
   </ul>

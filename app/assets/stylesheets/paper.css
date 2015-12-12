@@ -29,8 +29,12 @@ ul.posts h3 {
 
 ul.social li {
   display: inline;
+
 }
 
+ .panel ul {
+  margin-left: -40px !important;
+}
 
 
 .jp-flat-audio {
