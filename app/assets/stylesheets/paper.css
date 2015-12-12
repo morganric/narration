@@ -27,6 +27,11 @@ ul.posts h3 {
   margin-top: 0px;
 }
 
+ul.social li {
+  display: inline;
+}
+
+
 
 .jp-flat-audio {
   position: relative;
