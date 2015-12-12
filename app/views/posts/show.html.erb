@@ -1,3 +1,46 @@
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Embed: <%= @post.title %></h4>
+      </div>
+      <div class="modal-body">
+
+        <iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="450"></iframe>
+        <br>
+        <textarea cols="60"  id='fe_text' rows="3"><iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="350"></iframe><br/><a href="<%= user_post_url(:user_id => @post.user.profile.slug, :id => @post.slug) %>" target="_blank"><%= @post.title %></a> via <a href="<%= vanity_profile_url(:id => @post.user.profile.slug) %>" target="_blank"><%= @post.user.profile.display_name || @post.user.name %> </a> on <a href="<%= root_url %>" target="_blank">Readio</a></textarea>
+
+<script>
+  $(document).ready(function() {
+    var clip = new ZeroClipboard($("#d_clip_button"))
+  });
+
+  $("#clear-test").on("click", function(){
+    $("#fe_text").val("Copy me!");
+    $("#testarea").val("");
+  });
+</script>
+ </div> <div class="modal-footer"> <a href="#" class="btn btn-default" data-dismiss="modal">Close</a> 
+
+   <button class='my_clip_button btn btn-primary' data-clipboard-target='fe_text' data-clipboard-text='Default clipboard text from attribute' id='d_clip_button' title='Click me to copy to clipboard.'>
+    <b>Copy To Clipboard</b>
+  </button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  
+</div>
+
+
+
 <div class="col-md-12">
 <div class="col-md-8">
 
@@ -8,6 +51,18 @@
     via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @post.user.profile) %>
           </small>
 </h1>
+
+<p>
+<h5>
+  <label class='label label-primary'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
+  </label>&nbsp;
+   <%  @post.tag_list.each do |tag| %>
+  <label class="label label-default">
+  <i class="glyphicon glyphicon-tag" ></i>&nbsp;
+  <%= link_to "##{tag}", tag_path(tag: tag), :class=>"white"%></label>&nbsp;
+<% end %>
+</h5>
+</p>
 <hr/>
 
 <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
@@ -33,19 +88,8 @@
           </div>
         </div>
 
-<p>
-<h5>
-  <label class='label hidden label-success'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
-  </label>
-   <%  @post.tag_list.each do |tag| %>
-  <label class="label label-default">
-  <i class="glyphicon glyphicon-tag" ></i>&nbsp;
-  <%= link_to "##{tag}", tag_path(tag: tag), :class=>"white"%></label>
-<% end %>
-</h5>
-</p>
 
-
+<br/>
  <% unless @post.summary.blank? %>
 <p class="well">
   <%= @post.summary %>
@@ -58,13 +102,18 @@
 
   <%= image_tag @post.image.url(:square) %>
     <br/>
+    <br/>
+     <a type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+    <i class="glyphicon glyphicon-menu-left"></i>/<i class="glyphicon glyphicon-menu-right"></i> Embed
+  </a>
+
 
      <br/>
   <% if user_signed_in? %>
     <% if current_user.try(:admin?) || current_user == @post.user %>
-      <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-block btn-primary" %>
+      <%= link_to raw('<i class="glyphicon glyphicon-wrench" ></i> Edit'), edit_post_path(@post), class: "btn btn-block btn-default" %>
       <br/>
-      <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-danger" %>
+      <%= link_to raw('<i class="glyphicon glyphicon-trash" ></i> Delete'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-danger" %>
     <% end %>
   <% end %>
 
@@ -128,23 +177,15 @@ $("#jquery_jplayer_audio_1").jPlayer({
     },
     wmode: "window",
     ended: function() { // Avoid multiple jPlayers playing together.
-      $.ajax("/items/<%= @post.id %>/play");
-      <% unless current_user.blank? %>
-          $.ajax({
-            url: "/listens",
-           
-            data: {"listen": {"item_id": "<%= @post.id %>",
-                    "user_id":"<%= current_user.id %>"}},
-             method: "POST",
-
-          }).done(function() {
-            console.log('listen');
-          });
-     
-          <% end %>
+      $.ajax("/posts/<%= @post.id %>/play");
+      
     }
   });
 
+
+  $('.jp-play').on('click', function(){
+     $.post("/posts/<%= @post.id %>/play");
+  });
 
   
         $('.fav').on('click', function(e){

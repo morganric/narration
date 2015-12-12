@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :plays, :embed]
   before_filter :authenticate_user!,  except: [:index, :show, :tag, :featured]
   
 
@@ -26,6 +26,26 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
      authorize @post
+  end
+
+  def embed
+     render layout: 'embed'
+  end
+
+  def plays
+
+    @post.plays = @post.plays.to_i + 1
+    @post.save
+
+    respond_to do |format|
+     if @post.save
+       format.json { render :show, status: :ok, location: @post }
+     else
+       format.html { render action: 'new' }
+       format.json { render json: @post.errors, status: :unprocessable_entity }
+     end
+    end
+
   end
 
   # POST /posts
