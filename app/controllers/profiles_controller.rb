@@ -21,12 +21,14 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+     authorize @profile
   end
 
   # POST /profiles
   # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
+     authorize @profile
 
     respond_to do |format|
       if @profile.save
