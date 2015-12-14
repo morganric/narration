@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   get "pages/about" => "pages#about", as: :about
+  get "author/:author" => "posts#author", as: :author
+  get "provider/:provider" => "posts#provider", as: :provider
   resources :profiles
   get '/tagged/:tag', to: 'posts#tag', via: [:get, :post], :as => :tag
   post '/posts/:id/play' => 'posts#plays', as: :post_play

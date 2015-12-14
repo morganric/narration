@@ -25,6 +25,18 @@ class PostsController < ApplicationController
   def show
   end
 
+  def author
+    @author = params[:author]
+    @author = Post.where(:author => @author)
+  end
+
+  def provider
+    @provider = params[:provider]
+    @posts = Post.where(:provider => @provider)
+  end
+
+  # GET 
+
   # GET /posts/new
   def new
     @post = Post.new
@@ -67,6 +79,10 @@ class PostsController < ApplicationController
      if @post.summary == ""
         @post.summary =  obj[0].description
      end
+     @post.provider = obj[0].provider_name
+      @post.provider_url = obj[0].provider_url
+      @post.author = obj[0].author_name
+      @post.author_url = obj[0].author_url
     end
     @post.user_id = current_user.id
 
@@ -115,6 +131,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :url, :audio, :audio_link, :summary, :image, :user_id, :slug, :plays, :banner, :tag_list, :hidden, :featured, :html, :body)
+      params.require(:post).permit(:title, :url, :audio, :audio_link, :summary, :image, :user_id, :slug, 
+        :plays, :banner, :tag_list, :hidden, :featured, :html, :body, :author, :author_url, :provider, :provider_url)
     end
 end
