@@ -19,6 +19,10 @@ class PostsController < ApplicationController
     @posts = Post.tagged_with(@tag)    
   end
 
+  def featured
+
+    @posts = Post.where(:featured => true)    
+  end
 
   # GET /posts/1
   # GET /posts/1.json
