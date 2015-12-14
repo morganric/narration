@@ -1,55 +1,56 @@
 <%= simple_form_for(@post) do |f| %>
   <%= f.error_notification %>
 
-<div>
-  <div class="col-md-12 clearfix row">
+
+  <div class="col-md-12  row">
       <div class="col-md-6">
-  <div class="form-inputs">
-    <%= f.input :title, as: :hidden %>
-    <%= f.input :url %>
-    (URL to narrated content)
-    <br/>
-    <%#= f.label :audio %>
-    <%#= f.file_field :audio %>
-    <br/>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-    <br/>
-    <br/>
-    <%= f.input :audio_link %> (URL to mp3 file)
-    <br/>
-    <br/>
-    <%= f.input :summary, as: :hidden %>
-    
-    <%= f.text_field :tag_list, :onfocus=>"this.value='';", :value=> @post.tags.map(&:name).join(","), :class=>"form-control" %>
-  </div>
-    <% if user_signed_in? %>
-    <% if current_user.try(:admin?) %>
-    </div>
-    <div class="col-md-6">
-    
-  <div class="form-inputs well">
-    <%= f.input :user_id, as: :hidden %>
-    <%= f.input :slug, as: :hidden %>
-    <%= f.input :plays, as: :hidden %>
-     <%= f.label :banner %>
-    <%= f.file_field :banner %>
-    <br/>
-    
-    <%= f.input :hidden %>
-    <%= f.input :featured %>
-    <%= f.input :html %>
-    <%= f.input :body %>
-  </div>
-  <% end %>
-  <% end %>
-  </div>
+        <div class="form-inputs">
+          <%= f.input :title, as: :hidden %>
+          <%= f.input :url %>
+          (URL to narrated content)
+          <br/>
+          <%#= f.label :audio %>
+          <%#= f.file_field :audio %>
+          <br/>
+          <%= f.label :image %>
+          <%= f.file_field :image %>
+          <br/>
+          <br/>
+          <%= f.input :audio_link %> (URL to mp3 file)
+          <br/>
+          <br/>
+          <%= f.input :summary, as: :hidden %>
+          <%= f.label :tags %>
+          <%= f.text_field :tag_list, :onfocus=>"this.value='';", :value=> @post.tags.map(&:name).join(","), :class=>"form-control" %>
+        </div>
+      </div>
+       <div class="col-md-6">
+          <% if user_signed_in? %>
+          <% if current_user.try(:admin?) %>
+          <div class="form-inputs well">
+            <%= f.input :user_id, as: :hidden %>
+            <%= f.input :slug, as: :hidden %>
+            <%= f.input :plays, as: :hidden %>
+             <%= f.label :banner %>
+            <%= f.file_field :banner %>
+            <br/>
+            
+            <%= f.input :hidden %>
+            <%= f.input :featured %>
+            <%= f.input :html %>
+            <%= f.input :body %>
+          </div>
+        <% end %>
+        <% end %>
   </div>
 
+
+  <br/>
+   <br/>
   <div class="form-actions">
-  <hr/>
+      <hr/>
     <%= f.button :submit %>
   </div>
 <% end %>
 
-
+</div>
