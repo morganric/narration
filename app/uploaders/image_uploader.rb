@@ -41,6 +41,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [340, 340]
   end
 
+
+   version :featured do
+    process :resize_to_fill => [310, 60]
+  end
+
    version :embed_cover do
     process :resize_to_fill => [600, 600]
   end

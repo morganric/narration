@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @featured = Post.where(:featured => true) 
   end
 
   def tag
