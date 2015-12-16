@@ -6,7 +6,11 @@
 */
 
 .white {
-  color: white;
+  color: white !important;
+}
+
+.black {
+  color: black !important;
 }
 
 main {
