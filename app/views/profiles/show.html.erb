@@ -40,7 +40,7 @@
 <ul class="posts">
 		<% @profile.user.posts.each do |post| %>
 			<li class="well">
-          <%= link_to image_tag(post.image.url(:thumb), class: "img-thumbnail pull-left", style: "margin-right: 10px;"), user_post_path(id: post, user_id: post.user.name) %>
+          <%= link_to image_tag(post.image.url(:thumb) || "https://placebear.com/100/100", class: "img-thumbnail pull-left", style: "margin-right: 10px;"), user_post_path(id: post, user_id: post.user.name) %>
           <h3>
             <%= link_to truncate(post.title, :length => 30), user_post_path(id: post, user_id: post.user.name) %>
             <br/>

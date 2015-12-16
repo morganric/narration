@@ -110,7 +110,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 <div class="col-md-4 text-center">
   <br/>
 
-  <%= image_tag @post.image.url(:square) %>
+  <%= image_tag @post.image.url(:square) || "https://placebear.com/340/340" %>
     <br/>
     <br/>
      <a type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">

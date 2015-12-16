@@ -4,7 +4,7 @@
 <div class="col-md-12" >
 		<% @posts.order('plays DESC').each do |post| %>
 			<div class="col-md-4 well">
-          <%= link_to image_tag(post.image.url(:square), class: "img-thumbnail pull-left", style: "margin-right: 10px;"), user_post_path(id: post, user_id: post.user.name) %>
+          <%= link_to image_tag(post.image.url(:square) || "https://placebear.com/350/350", class: "img-thumbnail pull-left", style: "margin-right: 10px;"), user_post_path(id: post, user_id: post.user.name) %>
           <h3>
             <%= link_to truncate(post.title, :length => 18), user_post_path(id: post, user_id: post.user.name) %>
             <br/>
