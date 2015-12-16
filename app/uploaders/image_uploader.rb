@@ -34,7 +34,13 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fill => [100, 100]
+    process :eager => true
+    process :resize_to_fill => [100, 100, :north, crop: :scale]
+
+    # cloudinary_transformation :transformation =>[
+    #     {  :overlay => "play.png",
+    #          :gravity => :north_west, y: 150, x: 150, width: 300 }]
+
   end
 
    version :square do

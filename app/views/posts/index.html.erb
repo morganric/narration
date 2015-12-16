@@ -83,7 +83,8 @@
 
 			<ul class="nav" style="padding-left:40px;">
 			  <% @featured.each do |post| %>
-			  	<%= link_to image_tag(post.image.url(:featured)), user_post_path(:user_id => post.user.name, id: post.slug ) %>
+			  	<%= link_to image_tag(post.image.url(:featured)),  user_post_path(id: post, user_id: post.user.name)
+			  	 %>
 			  <% end %>
 			  </ul>
 
