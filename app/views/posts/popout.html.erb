@@ -128,6 +128,7 @@ $(document).ready(function(){
         m4a: "<%=raw @post.audio_link %>"
       });
       $("#jquery_jplayer_audio_1").jPlayer('play'); 
+      $.post("/posts/<%= @post.id %>/play");
     },
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");
