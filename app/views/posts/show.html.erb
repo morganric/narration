@@ -44,8 +44,8 @@
 <div class="col-md-12">
 <div class="col-md-8">
 
-<h1>
-  <%= link_to @post.title, @post.url, target: "_blank" %>
+<h1 >
+  <%= link_to @post.title, @post.url, target: "_blank", id:"link" %>
   <br/>
 </h1>
 
@@ -198,10 +198,21 @@ $("#jquery_jplayer_audio_1").jPlayer({
   });
 
   
-        $('.fav').on('click', function(e){
-                location.reload();
-        });
+  $('.fav').on('click', function(e){
+          location.reload();
+  });
 
+  $("#link").on('click', function(e) {
+    e.preventDefault();
+
+      window.open("<%= popout_url(id: @post, user_id: @post.user.name) %>", "narration.org", "width=500,height=500");
+
+
+    var win = window.open("<%= @post.url %>", '_blank');
+     win.focus();
+  });
+
+ 
 
 });
 

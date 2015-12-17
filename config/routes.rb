@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/tagged/:tag', to: 'posts#tag', via: [:get, :post], :as => :tag
   post '/posts/:id/play' => 'posts#plays', as: :post_play
   get '/:user_id/:id/embed', :to => "posts#embed", as: :embed
+  get '/:user_id/:id/popout', :to => "posts#popout", as: :popout
 
   resources :posts
 
