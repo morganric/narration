@@ -12,11 +12,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @featured = Post.where(:featured => true) 
+    @new = Post.all.order('created_at ASC')
   end
 
   def tag
     @tag = params[:tag]
-
     @posts = Post.tagged_with(@tag)    
   end
 
