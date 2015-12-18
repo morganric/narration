@@ -211,7 +211,7 @@ $("#jquery_jplayer_audio_1").jPlayer({
      // win.focus();
 
 
-    var popout =   window.open("<%= popout_url(id: @post, user_id: @post.user.name) %>", "narration.org", "width=400,height=400");
+    var popout =   window.open("<%= popout_url(id: @post, user_id: @post.user.name) %>", "narration.org", "width=400,height=400,left = 1250,top = 0");
     popout.focus();
 
   });

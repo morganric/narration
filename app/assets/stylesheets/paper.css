@@ -27,7 +27,7 @@ ul li {
 }
 
 
-ul.posts h3 {
+ul.posts h3, .popout h3 {
   margin-top: 0px;
 }
 
