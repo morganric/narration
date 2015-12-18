@@ -9,18 +9,18 @@
         <br/>
       </h3>
 
-      
-          <% unless post.author.blank? %>
           <h4>
-            by <%= link_to post.author, author_path(author: post.author) %> 
-            </h4>&nbsp;
+          <% unless post.author.blank? %>
+     
+            by <%= link_to post.author, author_path(author: post.author) %>&nbsp;
           <% end %> 
           <% unless post.provider.blank? %>
-            <h4>
+         
             on <%= link_to post.provider, provider_path(provider: post.provider) %>
-          </h4>
+    
 
           <% end %>
+                </h4>
 
       <h5>
       via   <%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile) %>

@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def author
     @author = params[:author]
-    @author = Post.where(:author => @author)
+    @posts = Post.where(:author => @author)
   end
 
   def provider
