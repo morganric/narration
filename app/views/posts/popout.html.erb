@@ -1,12 +1,14 @@
 
-<div class="container">
-  
-
-
-<h1><%= link_to @post.title, user_post_url(user_id: @post.user.profile.slug, id: @post.slug), :target => "_blank" %>
+<div class="container  clearfix">
 <br/>
+  
+<%= link_to cl_image_tag(@post.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: "img-thumbnail pull-left    ", style: "margin-right: 10px; width:120px; display: inline-block"), user_post_path(id: @post, user_id: @post.user.name) %>
+<h2>
+<%= link_to truncate(@post.title, length: 20), user_post_url(user_id: @post.user.profile.slug, id: @post.slug), :target => "_blank" %>
+<br/> 
 <small>via <%= link_to @post.user.name, vanity_profile_url(id: @post.user.profile.slug) , :target => "_blank" %></small>
-</h1>
+</h2>
+
 
 <h5>
  <label class="label label-primary">

@@ -45,8 +45,8 @@
 <div class="col-md-8">
 
 <h1 >
-  <%= link_to raw("#{@post.title}"), @post.url, target: "_blank", id:"link" %>
-  <small><%= link_to raw("<i class='glyphicon glyphicon-share' ></i>"), @post.url, target: "_blank", id:"link" %></small>
+  <%= link_to raw("#{@post.title}"), @post.url, target: "_blank", class:"link" %>
+  <small><%= link_to raw("<i class='glyphicon glyphicon-share' ></i>"), @post.url, target: "_blank", class:"link" %></small>
 
 </h1>
 
@@ -203,7 +203,7 @@ $("#jquery_jplayer_audio_1").jPlayer({
           location.reload();
   });
 
-  $("#link").on('click', function(e) {
+  $(".link").on('click', function(e) {
     e.preventDefault();
 
 
@@ -211,7 +211,7 @@ $("#jquery_jplayer_audio_1").jPlayer({
      // win.focus();
 
 
-    var popout =   window.open("<%= popout_url(id: @post, user_id: @post.user.name) %>", "narration.org", "width=350,height=450");
+    var popout =   window.open("<%= popout_url(id: @post, user_id: @post.user.name) %>", "narration.org", "width=400,height=400");
     popout.focus();
 
   });
