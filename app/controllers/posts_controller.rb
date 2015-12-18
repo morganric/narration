@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :plays, :embed, :popout]
-  before_filter :authenticate_user!,  except: [:index, :show, :tag, :featured, :embed, :tag, :author, :provider]
+  before_filter :authenticate_user!,  except: [:index, :show, :tag, :featured, :embed, :tag, :author, :provider, :popout]
   
 
    require 'embedly'
