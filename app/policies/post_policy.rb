@@ -36,8 +36,7 @@
   end
 
   def destroy?
-    return false if @current_user == @post.user
-    @current_user.admin?
+    @current_user.admin? or @current_user == @post.user
   end
 
 end
