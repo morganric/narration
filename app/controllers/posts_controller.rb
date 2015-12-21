@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order('plays ASC')
     @featured = Post.where(:featured => true) 
     @new = Post.all.order('created_at ASC')
   end
