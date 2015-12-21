@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order('plays DESC')
     @featured = Post.where(:featured => true) 
-    @new = Post.all.order('created_at ASC')
+    @new = Post.all.order('created_at DESC')
   end
 
   def tag
