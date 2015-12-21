@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214120728) do
+ActiveRecord::Schema.define(version: 20151221155820) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -35,15 +35,15 @@ ActiveRecord::Schema.define(version: 20151214120728) do
     t.string   "image"
     t.integer  "user_id"
     t.string   "slug"
-    t.integer  "plays"
+    t.integer  "plays",        default: 0
     t.string   "banner"
     t.string   "tag_list"
     t.boolean  "hidden"
     t.boolean  "featured"
     t.text     "html"
     t.text     "body"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "author"
     t.string   "author_url"
     t.string   "provider"

@@ -95,6 +95,7 @@ class PostsController < ApplicationController
       @post.author_url = obj[0].author_url
     end
     @post.user_id = current_user.id
+    @post.plays = 0
 
     respond_to do |format|
       if @post.save
