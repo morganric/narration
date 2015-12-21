@@ -2,6 +2,10 @@ class Post < ActiveRecord::Base
 
 acts_as_taggable
 
+
+extend FriendlyId
+  friendly_id :title, use: :slugged
+
 mount_uploader :image, ImageUploader
 
 
@@ -18,7 +22,5 @@ validates :audio_link, presence: true, unless: ->(user){user.audio.present?}
 validates :url, :format => URI::regexp(%w(http https))
 validates :audio_link, :format => URI::regexp(%w(http https))
 
-extend FriendlyId
-  friendly_id :title, use: :slugged
 
 end
