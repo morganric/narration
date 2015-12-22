@@ -1,4 +1,9 @@
 <h1><%= link_to @author, @posts.first.author_url %></h1>
 <hr/>
+<div class="col-md-12">
 
-  <%= render 'shared/posts', :posts => @posts %>
+	<div class="col-md-8">
+		  <%= render 'shared/posts', :posts => @posts %>
+	</div>
+	
+</div>

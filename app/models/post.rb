@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
 
 acts_as_taggable
-
+paginates_per 5
 
 extend FriendlyId
   friendly_id :title, use: :slugged

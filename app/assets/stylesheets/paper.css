@@ -17,6 +17,16 @@ main {
   background-color: transparent !important;
 }
 
+@media (min-width: 768px){
+
+  .navbar-nav {
+     float: none !important; 
+    margin: 0;
+}
+
+}
+
+
 ul {
   margin-left: 0px;
   padding-left: 0px; 

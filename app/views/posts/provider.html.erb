@@ -1,4 +1,10 @@
 <h1><%= link_to @provider, @posts.first.provider_url  %></h1>
 <hr/>
 
-  <%= render 'shared/posts', :posts => @posts %>
+<div class="col-md-12">
+
+	<div class="col-md-8">
+		  <%= render 'shared/posts', :posts => @posts %>
+	</div>
+	
+</div>

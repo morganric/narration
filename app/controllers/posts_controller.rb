@@ -10,9 +10,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order('plays DESC')
+    @posts = Post.all.order('plays DESC').page params[:page]
     @featured = Post.where(:featured => true) 
-    @new = Post.all.order('created_at DESC')
+    @new = Post.all.order('created_at DESC').page params[:page]
   end
 
   def tag
