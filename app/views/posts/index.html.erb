@@ -33,7 +33,8 @@
 
 <ul class="posts">
 		<% @new.each do |post| %>
-			<li class="well">
+			<li class="panel">
+			<div class="panel-body">
           <%= link_to cl_image_tag(post.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: "img-thumbnail pull-left", style: "margin-right: 10px; width:100px;"), user_post_path(id: post, user_id: post.user.name) %>
   
          
@@ -67,6 +68,7 @@
 			  <%= link_to "##{tag}", tag_path(tag: tag), :class=>"white"%></label>&nbsp;
 			<% end %>
 			</h6>
+			</div>
           </li>
 	    <% end %>
 	    </ul>
