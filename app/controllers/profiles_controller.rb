@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @posts = Post.where(:user_id => @profile.user.id)
+    @posts = Post.where(:user_id => @profile.user.id).page params[:page]
   end
 
   # GET /profiles/new
