@@ -1,6 +1,20 @@
 <ul class="posts">
-		<% @posts.order('plays DESC').each do |post| %>
+		<% @posts.order('plays DESC').each_with_index do |post, index| %>
+
+<% if params[:page].nil? || params[:page] == "0" || params[:page] == "1" %>
+    <% x = 0 %>
+  <% else %>
+    <% page = params[:page].to_i - 1 %>
+    <% x = page * 5 %>
+<% end %>
+
+
 			<li class="panel">
+
+      <span class="pull-right" style="margin-right:25px;" >
+      <h2><%= index+x+1 %></h2>
+    </span>
+
         <div class="panel-body">
           <%= link_to cl_image_tag(post.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: "img-thumbnail pull-left", style: "margin-right: 10px; width:100px;"), user_post_path(id: post, user_id: post.user.name) %>
   
