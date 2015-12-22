@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
   def tag
     @tag = params[:tag]
-    @posts = Post.tagged_with(@tag)    
+    @posts = Post.tagged_with(@tag).page params[:page]   
   end
 
   def featured
@@ -32,12 +32,12 @@ class PostsController < ApplicationController
 
   def author
     @author = params[:author]
-    @posts = Post.where(:author => @author)
+    @posts = Post.where(:author => @author).page params[:page]
   end
 
   def provider
     @provider = params[:provider]
-    @posts = Post.where(:provider => @provider)
+    @posts = Post.where(:provider => @provider).page params[:page]
   end
 
   # GET 
