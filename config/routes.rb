@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "author/:author" => "posts#author", as: :author
   get "provider/:provider" => "posts#provider", as: :provider
   get "featured" => "posts#featured", as: :featured
+  get "latest" => "posts#latest", as: :latest
 
   resources :profiles
   get '/tagged/:tag', to: 'posts#tag', via: [:get, :post], :as => :tag

@@ -15,6 +15,11 @@ class PostsController < ApplicationController
     @new = Post.all.order('created_at DESC').page params[:page]
   end
 
+  def latest
+    @featured = Post.where(:featured => true) 
+    @posts = Post.all.order('created_at DESC').page params[:page]
+  end
+
   def tag
     @tag = params[:tag]
     @posts = Post.tagged_with(@tag).page params[:page]   
