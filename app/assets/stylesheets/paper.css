@@ -26,6 +26,10 @@ main {
 
 }
 
+.jp-pause:before {
+    /*content: "\f04c";*/
+}
+
 
 ul {
   margin-left: 0px;
