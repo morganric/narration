@@ -38,8 +38,8 @@ class ImageUploader < CarrierWave::Uploader::Base
        # process :resize_to_fill => [100, 100, crop: :scale]
 
     cloudinary_transformation :transformation =>[
-        {:width => 100, :height => 100, :crop => :scale}, 
-        {  :overlay => "play.png", crop: :scale, :width=>0.5, :height=>0.5, :flags=>:relative,
+        {:width => 100, :height => 100, :crop => :fill}, 
+        {  :overlay => "play.png", crop: :fill, :width=>0.5, :height=>0.5, :flags=>:relative,
              :gravity => :center }]
 
 
