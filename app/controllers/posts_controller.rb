@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def featured
 
-    @posts = Post.where(:featured => true)    
+    @posts = Post.where(:featured => true).order('created_at DESC')
   end
 
   # GET /posts/1

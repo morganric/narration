@@ -61,7 +61,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
    version :embed_cover do
-    process :resize_to_fill => [600, 600]
+      process :eager => true
+    # process :resize_to_fill => [600, 600]
+
+
+    cloudinary_transformation :transformation =>[
+        {:width => 600, :height => 600, :crop => :fill}, 
+        {  :overlay => "play.png", crop: :fill, :width=>0.25, :height=>0.25, :flags=>:relative,
+             :gravity => :center }]
   end
 
 

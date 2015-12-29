@@ -1,6 +1,6 @@
-<!-- <div id="cover" class="play jp-play" style="">
+<div id="cover" class="play jp-play" style="">
 </div>
- -->
+
 <div class="container">
 
 <h2><%= link_to @post.title, user_post_url(user_id: @post.user.profile.slug, id: @post.slug), :target => "_blank" %>
@@ -27,7 +27,7 @@
 <div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player">
   <div class="jp-play-control jp-control">
     <button class="jp-play jp-button" role="button" aria-label="play" tabindex="0"></button>
-      <button class="jp-pause jp-button" role="button" aria-label="pause" tabindex="0"><i class="fa fa-pause" style="top: 15px; position: absolute; left: 18px;"></i></button>
+      <button class="jp-pause jp-button" role="button" aria-label="pause" tabindex="0" onclick=""><i class="fa fa-pause" style="top: 15px; position: absolute; left: 18px;"></i></button>
   </div>
   <div class="jp-bar">
     <div class="jp-seek-bar jp-seek-bar-display"></div>
@@ -127,7 +127,8 @@ h1 {
 $(document).ready(function(){
 
 
-  $('#cover').prepend('<br/><div class="col-md-12"><div class="well pull-left clearfix"><div class="pull-left"><h1><i class="icon-control-play i-2x"></i></h1></div><h2><%= truncate(@post.title, length: 30) %> <br/> <small> via <%= @post.user.name %></small></h2></div></div> ')
+
+  $('#cover').prepend('<br/><div class="col-md-12"><div style="opacity:0.9;" class="well pull-left clearfix"><div class="pull-left"><h1><i class="icon-control-play i-2x"></i></h1></div><h2><%= truncate(@post.title, length: 20) %> <br/> <small> via <%= @post.user.name %></small></h2></div></div> ')
 
 
   $("#jquery_jplayer_audio_1").jPlayer({
@@ -139,6 +140,9 @@ $(document).ready(function(){
     },
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");
+    },
+    pause: function(){
+      $(this).jPlayer('pause');
     },
     timeFormat: {
       padMin: false
@@ -167,12 +171,7 @@ $(document).ready(function(){
           $.post("/posts/<%= @post.id %>/play");
           console.log('play');
 
-
-  
-
         });
-
-
 
 
 
