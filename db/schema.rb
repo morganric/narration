@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221155820) do
+ActiveRecord::Schema.define(version: 20151229205954) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20151221155820) do
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
+    t.date    "created_at"
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true

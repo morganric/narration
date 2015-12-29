@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  
+  mount Upmin::Engine => '/admin'
+
   get "pages/about" => "pages#about", as: :about
   get "author/:author" => "posts#author", as: :author
   get "provider/:provider" => "posts#provider", as: :provider
@@ -14,7 +17,6 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  mount Upmin::Engine => '/admin'
 
   devise_for :users
   resources :users

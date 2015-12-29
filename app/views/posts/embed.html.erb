@@ -1,11 +1,11 @@
-<div id="cover" class="play jp-play" style="">
+<!-- <div id="cover" class="play jp-play" style="">
 </div>
-
+ -->
 <div class="container">
 
 <h2><%= link_to @post.title, user_post_url(user_id: @post.user.profile.slug, id: @post.slug), :target => "_blank" %>
 <br/>
-<small>via <%= link_to @post.user.name, vanity_profile_url(id: @post.user.profile.slug) , :target => "_blank" %></small>
+<small>via <%= link_to @post.user.profile.display_name, vanity_profile_url(id: @post.user.profile.slug) , :target => "_blank" %></small>
 </h2>
 
 <h5>
@@ -178,7 +178,7 @@ $(document).ready(function(){
 
         $('body').on('click', function(e){
             e.preventDefault;
-            $('#cover img').remove();
+            $('#cover').remove();
             $('#embed').fadeIn();
             $('#cover').fadeOut();
             $("#jquery_jplayer_audio_1").jPlayer('play');

@@ -38,7 +38,7 @@
                 </h5>
 
       <h6>
-      via   <%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile) %>
+      via   <%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile.slug) %>
       </h6>
 
           <h6>

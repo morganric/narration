@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :plays, :embed, :popout]
   before_filter :authenticate_user!,  except: [:index, :show, :tag, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest]
-  
+   before_action :admin_only, :except => [:show, :page, :popular, 
+                :edit, :index, :favourites, :update]
 
    require 'embedly'
   require 'json'
@@ -144,6 +145,12 @@ class PostsController < ApplicationController
   end
 
   private
+
+    def admin_only
+      unless current_user.admin? 
+        redirect_to :root, :alert => "Access denied."
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.friendly.find(params[:id])
