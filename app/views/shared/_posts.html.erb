@@ -19,12 +19,12 @@
           <%= link_to cl_image_tag(post.image.url(:thumb) || post.user.profile.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: "img-thumbnail pull-left", style: "margin-right: 10px; width:100px;"), user_post_path(id: post, user_id: post.user.name) %>
   
          
-      <h3>
-        <%= link_to truncate(post.title, length: 30), user_post_path(id: post, user_id: post.user.name) %>
+      <h4>
+        <%= link_to truncate(post.title, length: 45), user_post_path(id: post, user_id: post.user.name) %>
         <br/>
-      </h3>
+      </h4>
 
-          <h4>
+          <h5>
           <% unless post.author.blank? %>
      
             by <%= link_to post.author, author_path(author: post.author) %> 
@@ -35,16 +35,16 @@
     
 
           <% end %>
-                </h4>
+                </h5>
 
-      <h5>
+      <h6>
       via   <%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile) %>
-      </h5>
+      </h6>
 
           <h6>
           <label class='label label-primary'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(post.plays, 'play') %>
   			</label>&nbsp;
-          <%  post.tag_list.each do |tag| %>
+          <%  post.tags.limit(5).each do |tag| %>
 			  <label class="label label-default">
 			  <i class="glyphicon glyphicon-tag" ></i>&nbsp;
 			  <%= link_to "##{tag}", tag_path(tag: tag), :class=>"white"%></label>&nbsp;
