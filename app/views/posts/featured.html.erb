@@ -5,7 +5,7 @@
 <hr/>
 
 <div class="col-md-12" >
-		<% @posts.order('plays DESC').each do |post| %>
+		<% @posts.limit(3).order('plays DESC').each do |post| %>
 			<div class="col-md-4">
           <%= link_to image_tag(post.image.url(:square)  || post.user.profile.image.url(:square) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png", class: "img-thumbnail img-responsive", style: "margin-right: 10px;"), user_post_path(id: post, user_id: post.user.name) %>
           <h3>
