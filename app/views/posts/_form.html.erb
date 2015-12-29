@@ -7,17 +7,19 @@
         <div class="form-inputs">
           <%= f.input :title, as: :hidden %>
           <%= f.input :url %>
-          (URL to narrated content)
+          (URL to original content)
           <br/>
           <%#= f.label :audio %>
           <%#= f.file_field :audio %>
           <br/>
           <%= f.label :image %>
           <%= f.file_field :image %>
-          <br/>
+
           <br/>
           <%= f.input :audio_link %> (URL to mp3 file)
           <br/>
+          <br/>
+          <%= f.input :summary %>
           <br/>
           <%= f.input :summary, as: :hidden %>
           <%= f.label :tags %>
@@ -39,6 +41,7 @@
             <%= f.input :featured %>
             <%= f.input :html %>
             <%= f.input :body %>
+            <%= f.input :user_id %>
           </div>
         <% end %>
         <% end %>
