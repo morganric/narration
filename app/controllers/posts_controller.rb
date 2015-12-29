@@ -98,13 +98,13 @@ class PostsController < ApplicationController
      if @post.summary == ""
         @post.summary =  obj[0].description
      end
-     @post.provider = obj[0].provider_name
+      @post.provider = obj[0].provider_name
       @post.provider_url = obj[0].provider_url
       @post.author = obj[0].author_name
       @post.author_url = obj[0].author_url
     end
-    @post.user_id = current_user.id
-    @post.plays = 0
+      @post.user_id = current_user.id
+      @post.plays = 0
 
     respond_to do |format|
       if @post.save
