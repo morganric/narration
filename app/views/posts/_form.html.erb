@@ -29,11 +29,11 @@
           <% if user_signed_in? %>
           <% if current_user.try(:admin?) %>
           <div class="form-inputs well">
-            <%= f.input :user_id, as: :hidden %>
+            <%= f.input :title %>
             <%= f.input :slug, as: :hidden %>
-            <%= f.input :plays, as: :hidden %>
-             <%= f.label :banner %>
-            <%= f.file_field :banner %>
+            <%= f.input :plays%>
+             <%#= f.label :banner %>
+            <%#= f.file_field :banner %>
             <br/>
             
             <%= f.input :hidden %>
