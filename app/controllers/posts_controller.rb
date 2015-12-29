@@ -14,16 +14,19 @@ class PostsController < ApplicationController
     @posts = Post.all.order('plays DESC').page params[:page]
     @featured = Post.where(:featured => true) 
     @new = Post.all.order('created_at DESC').page params[:page]
+    @top = ActsAsTaggableOn::Tag.most_used(10) 
   end
 
   def latest
     @featured = Post.where(:featured => true) 
     @posts = Post.all.order('created_at DESC').page params[:page]
+    @top = ActsAsTaggableOn::Tag.most_used(10) 
   end
 
   def tag
     @tag = params[:tag]
-    @posts = Post.tagged_with(@tag).page params[:page]   
+    @posts = Post.tagged_with(@tag).page params[:page]  
+    @top = ActsAsTaggableOn::Tag.most_used(10) 
   end
 
   def featured
