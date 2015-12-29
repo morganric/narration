@@ -60,7 +60,7 @@
     </h2>
 
 <h3>
-via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @post.user.profile) %>
+via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @post.user.profile.slug) %>
 </h3>
 
 <p>
