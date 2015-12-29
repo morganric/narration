@@ -19,11 +19,10 @@
           <%= f.input :audio_link %> (URL to mp3 file)
           <br/>
           <br/>
-          <%= f.input :summary %>
+          <%= f.input :summary, placeholder: "Describe this post here..." %>
           <br/>
-          <%= f.input :summary, as: :hidden %>
           <%= f.label :tags %>
-          <%= f.text_field :tag_list, :onfocus=>"this.value='';", :value=> @post.tags.map(&:name).join(","), :class=>"form-control" %>
+          <%= f.text_field :tag_list, :onfocus=>"this.value='';", :value=> @post.tags.map(&:name).join(","), :class=>"form-control", placeholder: "e.g. tag1, tag2, tag3" %>
         </div>
       </div>
        <div class="col-md-6">
