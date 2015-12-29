@@ -30,6 +30,12 @@ Rails.application.routes.draw do
   get '/:user_id/:id', to: 'posts#show', :as =>  :user_post
 
 
-    root to: 'posts#index'
+  authenticated :user do
+    root to: "posts#index", as: :authenticated_root
+  end
+
+  unauthenticated do
+    root to: "posts#featured"
+  end
 
 end

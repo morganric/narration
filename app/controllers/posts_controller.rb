@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :plays, :embed, :popout]
-  before_filter :authenticate_user!,  except: [:index, :show, :tag, :featured, :embed, 
+  before_filter :authenticate_user!,  except: [ :show, :tag, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest]
    before_action :admin_only, :except => [:show, :page, :popular, 
-                :edit, :index, :favourites, :update]
+                :edit, :index, :favourites, :update, :featured]
 
    require 'embedly'
   require 'json'
