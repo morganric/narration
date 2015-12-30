@@ -3,7 +3,7 @@
 <div class="panel" style="margin:5px; padding:5px;">
 
 <div class="panel-body">
-          <%= link_to cl_image_tag(@post.image.url(:square) || @post.user.profile.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: "img-thumbnail pull-left", style: "margin-right: 10px; width:100px;"), user_post_path(id: @post, user_id: @post.user.name), target: "_blank" %>
+          <%= link_to cl_image_tag(@post.image.url(:square) || @post.user.profile.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: " pull-left", style: "margin-right: 10px; margin-bottom: 0px; width:125px;"), user_post_path(id: @post, user_id: @post.user.name), target: "_blank" %>
   
          
       <h4>
@@ -35,11 +35,10 @@
       <% end %>
       </h6>
 
-         
 
-      <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
+      <div id="jquery_jplayer_audio_1" class="jp-jplayer row"></div>
 
-<div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player">
+<div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player" style="margin-top:5px;">
   <div class="jp-play-control jp-control">
     <button class="jp-play jp-button" role="button" aria-label="play" tabindex="0"></button>
       <button class="jp-pause jp-button" role="button" aria-label="pause" tabindex="0" onclick=""><i class="fa fa-pause" style="top: 15px; position: absolute; left: 18px;"></i></button>
