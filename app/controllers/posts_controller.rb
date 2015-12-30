@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :plays, :embed, :popout]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
   before_filter :authenticate_user!,  except: [ :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest]
    before_action :admin_only, :except => [:embed, :destroy, :show, :page, :popular, :tag,
@@ -68,6 +68,9 @@ class PostsController < ApplicationController
 
    def popout
      render layout: 'embed'
+  end
+
+  def player
   end
 
 

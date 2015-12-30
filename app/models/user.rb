@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
 
    has_many :posts
 
-   has_one :profile
+   has_one :profile, dependent: :destroy
+    has_many :listens, :dependent => :destroy
 
 
   def create_profile

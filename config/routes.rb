@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :listens
   mount Upmin::Engine => '/admin'
 
   get "pages/about" => "pages#about", as: :about
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   post '/posts/:id/play' => 'posts#plays', as: :post_play
   get '/:user_id/:id/embed', :to => "posts#embed", as: :embed
   get '/:user_id/:id/popout', :to => "posts#popout", as: :popout
+  get '/:user_id/:id/player', :to => "posts#player", as: :player
 
   resources :posts
 

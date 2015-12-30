@@ -10,6 +10,8 @@ extend FriendlyId
 
 mount_uploader :image, ImageUploader
 
+has_many :listens, :dependent => :destroy
+
 
 belongs_to :user
 

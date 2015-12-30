@@ -13,6 +13,15 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @posts = Post.where(:user_id => @profile.user.id).order('created_at DESC').page params[:page]
+  
+    @listens = []
+
+    @profile.user.listens.each do |listen|
+      @listens << listen.post
+    end
+
+    @listens = @listens
+
   end
 
   # GET /profiles/new

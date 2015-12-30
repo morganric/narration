@@ -188,6 +188,7 @@ $("#jquery_jplayer_audio_1").jPlayer({
         title: "<%= @post.title %>",
         m4a: "<%= @post.audio || @post.audio_link %>"
       });
+      $("#jquery_jplayer_audio_1").jPlayer('play'); 
     },
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");
@@ -214,19 +215,6 @@ $("#jquery_jplayer_audio_1").jPlayer({
     wmode: "window",
     ended: function() { // Avoid multiple jPlayers playing together.
       $.ajax("/posts/<%= @post.id %>/play");
-      <% unless current_user.blank? %>
-          $.ajax({
-            url: "/listens",
-           
-            data: {"listen": {"post_id": "<%= @post.id %>",
-                    "user_id":"<%= current_user.id %>"}},
-             method: "POST",
-
-          }).done(function() {
-            console.log('listen');
-          });
-     
-          <% end %>
       
     }
   });
