@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount Upmin::Engine => '/admin'
 
   get "pages/about" => "pages#about", as: :about
+  get "pages/welcome" => "pages#welcome", as: :welcome
   get "author/:author" => "posts#author", as: :author
   get "provider/:provider" => "posts#provider", as: :provider
   get "featured" => "posts#featured", as: :featured
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated do
-    root to: "posts#featured"
+    root to: "pages#welcome"
   end
 
 end
