@@ -24,6 +24,12 @@ main {
     margin: 0;
 }
 
+.carousel-caption {
+    background: black;
+    opacity: 0.7;
+    border-radius: 5px;
+}
+
 }
 
 .jp-pause:before {
