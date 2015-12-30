@@ -8,6 +8,8 @@ class PostsController < ApplicationController
    require 'embedly'
   require 'json'
 
+after_filter :allow_iframe
+
 
   # GET /posts
   # GET /posts.json
@@ -154,6 +156,14 @@ class PostsController < ApplicationController
         redirect_to :root, :alert => "Access denied."
       end
     end
+
+    
+    def allow_iframe
+      response.headers['X-Frame-Options'] = "ALLOWALL"
+    end
+    
+
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.friendly.find(params[:id])
