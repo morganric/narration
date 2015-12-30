@@ -132,6 +132,8 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 </p>
 <% end %>
 
+ 
+
 </div>
 <div class="col-md-4 text-center">
   <br/>
@@ -144,12 +146,14 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   </a>
 
 
-     <br/>
+
   <% if user_signed_in? %>
     <% if current_user.try(:admin?) || current_user == @post.user %>
+         <br/>
       <%= link_to raw('<i class="glyphicon glyphicon-wrench" ></i> Edit'), edit_post_path(@post), class: "btn btn-block btn-default" %>
       <br/>
       <%= link_to raw('<i class="glyphicon glyphicon-trash" ></i> Delete'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-danger" %>
+        <br/>
     <% end %>
   <% end %>
 
@@ -163,14 +167,39 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 
 <ul class="nav social" style="padding-left:40px;">
   <li style="postion:absolute; top:-6px;"><%= like_button("1440239169528450", send: true, :url => post_url( :id => @post.id), layout: :button) %></li>
-  <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "") %></li>
+  <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 100)}") %></li>
   <li><%= pinit_button %></li>
   </ul>
 
 </div>
 </div>
 
+
+
+<% unless @post.listens.blank? %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Listeners </h3>
+  </div>
+  <div class="panel-body">
+
+   <!--  <ul class="nav social" style="padding-left:40px;"> -->
+    
+      <% @post.listens.each do |listen| %>
+        <span data-toggle="tooltip" data-placement="top" title="<%= listen.user.profile.display_name %>" >
+        <%= link_to image_tag(listen.user.profile.image.url(:listener), class: "img-circle"), vanity_profile_path(id: listen.user.name)  %>
+        </span>
+      <% end %>
+
+      <!-- </ul> -->
+
+    </div>
+</div>
+
+<% end %>
+
 <br/>
+
 </div>  
 
 
@@ -214,7 +243,14 @@ $("#jquery_jplayer_audio_1").jPlayer({
     wmode: "window",
     ended: function() { // Avoid multiple jPlayers playing together.
       $.ajax("/posts/<%= @post.id %>/play");
-      <% unless current_user.blank? %>
+      
+    }
+  });
+
+
+  $('.jp-play').on('click', function(){
+     $.post("/posts/<%= @post.id %>/play");
+     <% unless current_user.blank? %>
           $.ajax({
             url: "/listens",
            
@@ -228,12 +264,6 @@ $("#jquery_jplayer_audio_1").jPlayer({
      
           <% end %>
       
-    }
-  });
-
-
-  $('.jp-play').on('click', function(){
-     $.post("/posts/<%= @post.id %>/play");
   });
 
   
@@ -253,6 +283,10 @@ $("#jquery_jplayer_audio_1").jPlayer({
     popout.focus();
 
   });
+
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
  
 
