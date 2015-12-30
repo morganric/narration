@@ -33,10 +33,10 @@
         <h4 class="modal-title" id="myModalLabel">Embed: <%= @post.title %></h4>
       </div>
       <div class="modal-body">
-        <iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="450"></iframe>
+        <iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="300"></iframe>
         <br>
 
-        <textarea cols="60"  id='fe_text' rows="3"><iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="350"></iframe><br/><a href="<%= user_post_url(:user_id => @post.user.profile.slug, :id => @post.slug) %>" target="_blank"><%= @post.title %></a> via <a href="<%= vanity_profile_url(:id => @post.user.profile.slug) %>" target="_blank"><%= @post.user.profile.display_name || @post.user.name %> </a> on <a href="<%= root_url %>" target="_blank">Readio</a></textarea>
+        <textarea cols="60"  id='fe_text' rows="3"><iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="30"></iframe><br/><a href="<%= user_post_url(:user_id => @post.user.profile.slug, :id => @post.slug) %>" target="_blank"><%= @post.title %></a> via <a href="<%= vanity_profile_url(:id => @post.user.profile.slug) %>" target="_blank"><%= @post.user.profile.display_name || @post.user.name %> </a> on <a href="<%= root_url %>" target="_blank">Readio</a></textarea>
 
 <script>
   $(document).ready(function() {

@@ -1,43 +1,28 @@
+<div id="cover" class="play jp-play" style="">
+</div>
 
+<div class="container">
 
-<div class="panel" style="margin:5px; padding:5px;">
+<h2><%= link_to @post.title, user_post_url(user_id: @post.user.profile.slug, id: @post.slug), :target => "_blank" %>
+<br/>
+<small>via <%= link_to @post.user.profile.display_name, vanity_profile_url(id: @post.user.profile.slug) , :target => "_blank" %></small>
+</h2>
 
-<div class="panel-body">
-          <%= link_to cl_image_tag(@post.image.url(:square) || @post.user.profile.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: "img-thumbnail pull-left", style: "margin-right: 10px; width:100px;"), user_post_path(id: @post, user_id: @post.user.name), target: "_blank" %>
-  
-         
-      <h4>
-        <%= link_to truncate(@post.title, length: 45), user_post_path(id: @post, user_id: @post.user.name), target: "_blank" %>
-      </h4>
+<h5>
+ <label class="label label-primary">
 
-          <h5>
-          <% unless @post.author.blank? %>
-     
-            by <%= link_to @post.author, author_path(author: @post.author), target: "_blank" %> 
-          <% end %> 
-          <% unless @post.provider.blank? %>
-         
-            on <%= link_to @post.provider, provider_path(provider: @post.provider), target: "_blank" %>
-          <% end %>
-                </h5>
+     <i class="glyphicon glyphicon-play"></i> 
 
-      <h6>
-      via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @post.user.profile.slug), target: "_blank" %>
-      </h6>
+     <%= pluralize(@post.plays.to_i, 'play') %>
+   </label>&nbsp;
+  <% @post.tag_list.each do |tag| %>
+      <label class="label label-default"> <i class="glyphicon glyphicon-tag"></i> 
+      <%= link_to tag, tag_path(tag), :target => "_blank", class: "white" %></label>
+  <% end %>
+  </h5>
+  <br/>
 
-       <h6>
-          <label class='label label-primary'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
-        </label>&nbsp;
-          <%  @post.tags.limit(5).each do |tag| %>
-        <label class="label label-default">
-        <i class="glyphicon glyphicon-tag" ></i>&nbsp;
-        <%= link_to "##{tag}", tag_path(tag: tag.name), :class=>"white", target: "_blank" %></label>&nbsp;
-      <% end %>
-      </h6>
-
-         
-
-      <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
+<div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
 
 <div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player">
   <div class="jp-play-control jp-control">
@@ -61,16 +46,13 @@
   </div>
 </div>
 
-      <div class="pull-right">
-        <h4>
-      <%= link_to image_tag("http://res.cloudinary.com/narration/image/upload/t_media_lib_thumb/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png", style: "width:25px;"), root_path, class: '', target: "_blank" %>
+<div class="pull-right">
+    <h4>
+  <%= link_to image_tag("http://res.cloudinary.com/narration/image/upload/t_media_lib_thumb/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png", style: "width:25px;"), root_path, class: '', target: "_blank" %>
 
-          <%= link_to 'narrated.org', root_path, class: 'black', target: "_blank" %> 
-       </h4>
-    </div>
-
-      </div>
-
+      <%= link_to 'narrated.org', root_path, class: 'black', target: "_blank" %> 
+   </h4>
+</div>
 
 
 </div>
@@ -193,7 +175,16 @@ $(document).ready(function(){
 
 
 
-        
+        $('body').on('click', function(e){
+            e.preventDefault;
+            $('#cover').remove();
+            $('#embed').fadeIn();
+            $('#cover').fadeOut();
+            $("#jquery_jplayer_audio_1").jPlayer('play');
+            
+          
+      });
+
 
 });
 
