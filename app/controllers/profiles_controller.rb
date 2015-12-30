@@ -3,6 +3,9 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :page, :popular, :favourites, :index]
   before_action :admin_only, :except => [:show, :page, :popular, :edit, :index, :favourites, :update]
 
+
+  after_filter :allow_iframe
+
   # GET /profiles
   # GET /profiles.json
   def index
@@ -82,6 +85,11 @@ class ProfilesController < ApplicationController
         redirect_to :root, :alert => "Access denied."
       end
     end
+
+    def allow_iframe
+      response.headers['X-Frame-Options'] = "ALLOWALL"
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.friendly.find(params[:id])
