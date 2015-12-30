@@ -1,3 +1,27 @@
+<% content_for :head do %>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@narratedorg">
+<meta name="twitter:title" content="<%= @post.title %>">
+<meta name="twitter:description" content="<%= @post.summary %>">
+<meta name="twitter:creator" content="@narratedorg">
+<meta name="twitter:image:src" content="<%= @post.image.url(:twitter_card) %>">
+<meta name="twitter:domain" content="narrated.org">
+
+<meta name="twitter:player:width" content="350px">
+<meta name="twitter:player:height" content="350px">
+
+<meta property="og:title" content="<%= @post.title %>" />
+<meta property="og:url" content="<%= post_url(id: @post.slug) %>" />
+<meta property="og:image" content="<%= @post.image.url(:twitter_card)  %>" />
+<meta property="og:image:url" content="<%= @post.image.url(:twitter_card) %>" />
+<meta name="og:description" content="<%= @post.summary %>">
+<meta property="og:site_name" content="Narrated.org" />
+
+
+<meta property="og:audio:title" content="<%= @post.title %>" />
+
+<% end %>
+
 
 
 <!-- Modal -->

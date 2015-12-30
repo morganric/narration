@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!,  except: [ :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest]
    before_action :admin_only, :except => [:embed, :destroy, :show, :page, :popular, :tag,
-                :edit, :index, :favourites, :update, :featured, :popout, :latest, :provier, :author]
+                :edit, :index, :favourites, :update, :featured, :popout, :latest, :provider, :author]
 
    require 'embedly'
   require 'json'
