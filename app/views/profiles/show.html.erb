@@ -120,14 +120,10 @@
 </p>
 
 <p>
-  <strong>Website:</strong>
-  <%= @profile.website %>
+
+  <%= link_to  @profile.website, "http://#{@profile.website}", target: "_blank" %>
 </p>
 
-<p>
-  <strong>Twitter:</strong>
-  <%= @profile.twitter %>
-</p>
 
 </div>
 
