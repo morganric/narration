@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
+  before_action :set_post, only: [:download, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
   before_filter :authenticate_user!,  except: [ :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest, :plays]
    before_action :admin_only, :except => [:embed, :destroy, :show, :page, :popular, :tag,
@@ -35,6 +35,17 @@ after_filter :allow_iframe
   def featured
 
     @posts = Post.where(:featured => true).order('created_at DESC').limit(3)
+  end
+
+
+  def download
+    require 'open-uri'
+    data = open(@post.audio_link) 
+    send_data data.read, filename: "#{@post.slug}.mp3", type: "audio/mp3", disposition: 'attachment', stream: 'true', buffer_size: '4096' 
+    
+    @post.downloads = @post.downloads + 1
+    @post.save
+
   end
 
   # GET /posts/1

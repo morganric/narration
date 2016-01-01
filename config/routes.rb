@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  get "posts/:id/download", :to => 'posts#download', as: :post_download
+
 
   devise_for :users
   resources :users
