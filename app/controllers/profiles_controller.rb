@@ -17,13 +17,7 @@ class ProfilesController < ApplicationController
   def show
     @posts = Post.where(:user_id => @profile.user.id).order('created_at DESC').page params[:page]
   
-    @listens = []
-
-    @profile.user.listens.each do |listen|
-      @listens << listen.post
-    end
-
-    @listens = @listens
+    @listens = @profile.user.listenings.page params[:page]
 
   end
 
