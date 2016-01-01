@@ -5,6 +5,10 @@
  *= require paper/bootswatch
 */
 
+h3 {
+  margin-top: 10px !important;
+}
+
 .white {
   color: white !important;
 }

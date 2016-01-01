@@ -74,6 +74,7 @@
 
 </h2>
 
+<% unless @post.author.blank? && @post.provider.blank? %>
 <h3>
     <% unless @post.author.blank? %>
       by <%= link_to @post.author, author_path(author: @post.author) %> 
@@ -81,7 +82,9 @@
     <% unless @post.provider.blank? %>
       on <%= link_to @post.provider, provider_path(provider: @post.provider) %>
     <% end %>
-    </h3>
+</h3>
+<% end %>
+
 
 <h4>
 via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @post.user.profile.slug) %>
