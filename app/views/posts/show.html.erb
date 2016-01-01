@@ -68,24 +68,24 @@
 <div class="col-md-12">
 <div class="col-md-8">
 
-<h1 >
+<h2 >
   <%= link_to raw("#{@post.title}"), @post.url, target: "_blank", class:"link" %>
   <small><%= link_to raw("<i class='glyphicon glyphicon-share' ></i>"), @post.url, target: "_blank", class:"link" %></small>
 
-</h1>
+</h2>
 
-<h2>
+<h3>
     <% unless @post.author.blank? %>
       by <%= link_to @post.author, author_path(author: @post.author) %> 
     <% end %>
     <% unless @post.provider.blank? %>
       on <%= link_to @post.provider, provider_path(provider: @post.provider) %>
     <% end %>
-    </h2>
+    </h3>
 
-<h3>
+<h4>
 via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @post.user.profile.slug) %>
-</h3>
+</h4>
 
 <p>
 <h6>
@@ -98,7 +98,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 <% end %>
 </h6>
 </p>
-<hr/>
+
 
 <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
 
