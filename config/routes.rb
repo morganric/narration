@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   scope ":id" do
     get '/', to: 'profiles#show', :as =>  :vanity_profile
+    get '/about', to: 'profiles#about', as: :about_profile
+    get '/listens', to: 'profiles#listens', as: :listens_profile
     
   end
 
