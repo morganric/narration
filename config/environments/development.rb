@@ -1,6 +1,6 @@
 
-ENV["MANDRILL_USERNAME"] = 'morganric+artup@gmail.com'
-ENV["MANDRILL_APIKEY"] = 'M3G7MmfWxDBYTxnRArXrYg'
+ENV["MANDRILL_USERNAME"] = 'morganric+readio@gmail.com'
+ENV["MANDRILL_APIKEY"] = 'dl5J0-OYpJtZ_v59gVGINQ'
 
 
 Rails.application.configure do

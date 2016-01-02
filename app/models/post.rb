@@ -9,6 +9,7 @@ extend FriendlyId
    before_validation :set_default_title
 
 mount_uploader :image, ImageUploader
+mount_uploader :banner, ImageUploader
 
 has_many :listens, :dependent => :destroy
 

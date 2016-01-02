@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :listens
   mount Upmin::Engine => '/admin'
+  mount Maktoub::Engine => '/news'
 
   get "pages/about" => "pages#about", as: :about
   get "pages/welcome" => "pages#welcome", as: :welcome

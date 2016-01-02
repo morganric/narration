@@ -1,0 +1,88 @@
+<style type="text/css">
+	
+	.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+</style>
+
+
+<div class="wrapper clearfix">
+
+<div style="width:140px; float: right;">
+	<h4>Suggested <br/>
+	Listening</h4>
+	<hr/>
+		<% Post.where(:featured => true).each do |post| %>
+	<p class="well">
+	<%= link_to image_tag(post.image.url(:thumb)), "http://narrated.org/posts/#{post.id}", target: "_blank" %><br/>
+	<%= link_to post.title, "http://narrated.org/posts/#{post.id}", target: "_blank" %>
+	
+	</p>
+	<% end %>
+
+</div>
+
+
+<div style="width:400px; float: left;">
+
+<h1>Hello <%= @name %></h1>
+
+<p>Welcome to the first Narrated.org newsletter of 2016</p>
+	<p class="well">
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+	</p>
+
+	<p class="well">
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	</p>
+
+	<p class="well">
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	</p>
+
+	<p>
+		Thanks for reading<br/>
+		The Narrated.org Team
+	</p>
+
+
+</div>
+
+
+
+</div>
+
+
+

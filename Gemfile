@@ -24,6 +24,7 @@ gem 'nokogiri'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem "embedly"
 gem 'jplayer-rails'
+gem 'maktoub'
 
 group :development, :test do
   gem 'byebug'
