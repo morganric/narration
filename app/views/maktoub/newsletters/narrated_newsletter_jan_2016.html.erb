@@ -23,7 +23,7 @@
 	<h4>Suggested <br/>
 	Listening</h4>
 	<hr/>
-		<% Post.where(:featured => true).each do |post| %>
+	<% Post.where(:featured => true).order('created_at DESC').limit(3).each do |post| %>
 	<p class="well">
 	<%= link_to image_tag(post.image.url(:thumb)), "http://narrated.org/posts/#{post.id}", target: "_blank" %><br/>
 	<%= link_to post.title, "http://narrated.org/posts/#{post.id}", target: "_blank" %>
