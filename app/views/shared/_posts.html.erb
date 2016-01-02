@@ -41,7 +41,7 @@
       via   <%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile.slug) %>
       </h6>
 
-          <h6>
+      <h6>
           <label class='label label-primary'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(post.plays, 'play') %>
   			</label>&nbsp;
           <%  post.tags.limit(5).each do |tag| %>

@@ -36,7 +36,8 @@
 <h2>
   <%= @profile.display_name || @profile.username %>
 </h2>
-<p>
+<hr/>
+<div>
 <ul class="nav nav-pills" id="myTabs">
   <li ><a href="<%= vanity_profile_url(@profile.slug) %>" >
     <i class="glyphicon glyphicon-upload" ></i> Uploads
@@ -49,9 +50,9 @@
   </a></li>
 
 </ul>
-</p>
+</div>
 
-
+<br/>
  <ul class="posts">
     <% @listens.order('created_at DESC').each_with_index do |post| %>
 
