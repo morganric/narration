@@ -1,35 +1,52 @@
+<hr/>
 <%= simple_form_for(@post) do |f| %>
   <%= f.error_notification %>
 
 
   <div class="col-md-12  row">
       <div class="col-md-6">
-        <div class="form-inputs">
-          <%= f.input :title, as: :hidden %>
+        <div class="form-inputs well">
+          <%= f.input :title%>
+          </div>
+         
+          <div class="form-inputs well">
+   
           <%= f.input :url %>
           (URL to original content)
-          <br/>
+          </div>
+         
+          <div class="form-inputs well">
           <%#= f.label :audio %>
           <%#= f.file_field :audio %>
-          <br/>
+          <%= f.input :audio_link %> (URL to mp3 file)
+          </div> 
+      </div>
+      <div class="col-md-6">
+
+          <div class="form-inputs well">
           <%= f.label :image %>
           <%= f.file_field :image %>
+          </div>
 
-          <br/>
-          <%= f.input :audio_link %> (URL to mp3 file)
-          <br/>
-          <br/>
-          <%= f.input :summary, placeholder: "Describe this post here..." %>
-          <br/>
+          <div class="form-inputs well">
+          <%= f.input :summary, placeholder: "Describe this post here...", :input_html => {:rows => 4} %>
+          </div>
+
+          <div class="form-inputs well">
           <%= f.label :tags %>
           <%= f.text_field :tag_list, :onfocus=>"this.value='';", :value=> @post.tags.map(&:name).join(","), :class=>"form-control", placeholder: "e.g. tag1, tag2, tag3" %>
-        </div>
+          </div>
+
       </div>
-       <div class="col-md-6">
-          <% if user_signed_in? %>
+  </div>
+
+  <div class="col-md-12 ">
+    <hr/>
+     <% if user_signed_in? %>
           <% if current_user.try(:admin?) %>
+
           <div class="form-inputs well">
-            <%= f.input :title %>
+            <h3>Admin</h3>
             <%= f.input :slug, as: :hidden %>
             <%= f.input :plays%>
              <%#= f.label :banner %>
@@ -44,7 +61,6 @@
           </div>
         <% end %>
         <% end %>
-  </div>
 </div>
 
 <br/>

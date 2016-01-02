@@ -1,4 +1,56 @@
 <h1>Editing </h1>
 
-<%= render 'form' %>
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
+
+
+  <div class="col-md-12  row">
+      
+        <div class="form-inputs well">
+          <%= f.label :image %>
+          <%= f.file_field :image %>
+          </div>
+
+          <div class="form-inputs well">
+          <%= f.input :summary, placeholder: "Describe this post here...", :input_html => {:rows => 4} %>
+          </div>
+
+             <div class="form-inputs well">
+          <%= f.label :tags %>
+          <%= f.text_field :tag_list, :onfocus=>"this.value='';", :value=> @post.tags.map(&:name).join(","), :class=>"form-control", placeholder: "e.g. tag1, tag2, tag3" %>
+          </div>
+  </div>
+
+  <div class="col-md-12 row">
+    <hr/>
+     <% if user_signed_in? %>
+          <% if current_user.try(:admin?) %>
+
+          <div class="form-inputs well">
+            <h3>Admin</h3>
+            <%= f.input :slug, as: :hidden %>
+            <%= f.input :plays%>
+             <%#= f.label :banner %>
+            <%#= f.file_field :banner %>
+            <br/>
+            
+            <%= f.input :hidden %>
+            <%= f.input :featured %>
+            <%= f.input :html,  as: :hidden %>
+            <%= f.input :body,  as: :hidden %>
+            <%= f.input :user_id %>
+          </div>
+        <% end %>
+        <% end %>
+  </div>
+</div>
+
+<br/>
+      <hr/>
+
+  <div class="form-actions pull-left">
+       <br/>
+    <%= f.button :submit %>
+  </div>
+<% end %>
 
