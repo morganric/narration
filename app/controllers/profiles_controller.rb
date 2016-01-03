@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:about, :listens, :show, :edit, :update, :destroy]
   before_action :authenticate_user!, :except => [:show, :about, :listens, :page, :popular, :favourites, :index]
-  before_action :admin_only, :except => [:show, :about, :listens, :page, :popular, :edit, :index, :favourites, :update]
+  before_action :admin_only, :except => [:show, :about, :listens, :page, :popular, :edit, :favourites, :update]
 
 
 
@@ -63,7 +63,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to vanity_profile_path(:id => @profile.user.name), notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }
