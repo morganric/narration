@@ -34,7 +34,7 @@ after_filter :allow_iframe
 
   def featured
 
-    @posts = Post.where(:featured => true).order('created_at DESC').limit(3)
+    @posts = Post.where(:featured => true).order('created_at DESC')
   end
 
 
