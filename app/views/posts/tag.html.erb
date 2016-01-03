@@ -5,7 +5,7 @@
 
 <br/>
 
-<div>
+<div class="col-md-12">
 <div class="col-md-8">
 	
 	 <%= render 'shared/posts', :posts => @posts %>
@@ -13,6 +13,21 @@
 
 </div>
 <div class="col-md-4">
+
+	<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title"><i class="glyphicon glyphicon-share-alt"></i>  Share </h3>
+			  </div>
+			  <div class="panel-body">
+
+			<ul class="nav social" style="padding-left:40px;">
+			  <li style="postion:absolute; top:-6px;"><%= like_button("1440239169528450", send: true, :url => tag_url(@tag), layout: :button) %></li>
+			  <li><%= tweet_button(count: 'inline', :url => tag_url(@tag), via: "") %></li>
+			  <li><%= pinit_button %></li>
+			  </ul>
+
+			</div>
+		</div>
 
 	<div class="panel panel-default">
 			  <div class="panel-heading">
