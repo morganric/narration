@@ -28,8 +28,7 @@
 </div>
 
 <% if current_user != nil %>
-
-
+<br/>
 <div class="col-md-12" >
     <% @posts.order('plays DESC')[3..5].each do |post| %>
       <div class="col-md-4">

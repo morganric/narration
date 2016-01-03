@@ -59,7 +59,7 @@
 			  <div class="panel-body">
 
 			<ul class="nav" style="padding-left:40px;">
-			  <% @featured.each do |post| %>
+			  <% @featured.limit(3).each do |post| %>
 			  	<%= link_to image_tag(post.image.url(:featured), class: "img-responsive"),  user_post_path(id: post, user_id: post.user.name)
 			  	 %>
 			  <% end %>
