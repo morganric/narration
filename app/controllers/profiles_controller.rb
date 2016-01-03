@@ -85,7 +85,7 @@ class ProfilesController < ApplicationController
   private
 
     def admin_only
-      unless current_user.admin? 
+      unless current_user && current_user.admin? 
         redirect_to :root, :alert => "Access denied."
       end
     end
