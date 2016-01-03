@@ -34,16 +34,15 @@ main {
   .navbar-nav {
     float: none !important; 
     margin: 0;
+  } 
+
+
+  .carousel-caption {
+      background: black;
+      opacity: 0.7;
+      border-radius: 5px;
+      padding: 5px;
   }
-
-}
-
-.carousel-caption {
-    background: black;
-    opacity: 0.7;
-    border-radius: 5px;
-    padding: 5px;
-}
 
 }
 
