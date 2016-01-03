@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:download, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
-  before_filter :authenticate_user!,  except: [ :show, :featured, :embed, 
+  before_action :set_post, only: [:download, :miniembed, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
+  before_filter :authenticate_user!,  except: [:miniembed, :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest, :plays]
-   before_action :admin_only, :except => [:embed, :destroy, :show, :page, :popular, :tag,
+   before_action :admin_only, :except => [:embed, :miniembed, :destroy, :show, :page, :popular, :tag,
                 :edit, :index, :favourites, :update, :featured, :popout, :latest, :provider, :author, :plays]
 
    require 'embedly'
@@ -76,6 +76,10 @@ after_filter :allow_iframe
   end
 
   def embed
+     render layout: 'embed'
+  end
+
+  def miniembed
      render layout: 'embed'
   end
 
