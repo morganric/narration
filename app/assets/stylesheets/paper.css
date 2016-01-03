@@ -21,17 +21,18 @@ main {
   background-color: transparent !important;
 }
 
-@media (max-width: 480px){
+@media (max-width: 480px) {
+
     .carousel {
-    display: none !important;
-  }
+      display: none !important;
+     }
 
 }
 
 @media (min-width: 768px){
 
   .navbar-nav {
-     float: none !important; 
+    float: none !important; 
     margin: 0;
   }
 
