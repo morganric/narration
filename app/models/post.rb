@@ -16,14 +16,16 @@ has_many :listens, :dependent => :destroy
 
 belongs_to :user
 
-validates_presence_of :url	
-validates_presence_of :title	
+# validates_presence_of :url	
+# validates_presence_of :title	
 
+validates :title, presence: true, unless: ->(user){user.url.present?}
+validates :url, presence: true, unless: ->(user){user.title.present?}
 
 validates :audio, presence: true, unless: ->(user){user.audio_link.present?}
 validates :audio_link, presence: true, unless: ->(user){user.audio.present?}
 
-validates :url, :format => URI::regexp(%w(http https))
+validates :url, :format => URI::regexp(%w(http https)), :allow_blank => true
 validates :audio_link, :format => URI::regexp(%w(http https))
 
 def should_generate_new_friendly_id?
