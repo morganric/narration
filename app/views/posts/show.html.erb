@@ -238,6 +238,20 @@ $("#jquery_jplayer_audio_1").jPlayer({
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");
       console.log('play');
+      $.post("/posts/<%= @post.id %>/play");
+     <% unless current_user.blank? %>
+          $.ajax({
+            url: "/listens",
+           
+            data: {"listen": {"post_id": "<%= @post.id %>",
+                    "user_id":"<%= current_user.id %>"}},
+             method: "POST",
+
+          }).done(function() {
+            console.log('listen');
+          });
+     
+          <% end %>
     },
     timeFormat: {
       padMin: false
@@ -266,20 +280,20 @@ $("#jquery_jplayer_audio_1").jPlayer({
 
 
   $('.jp-play').on('click', function(){
-     $.post("/posts/<%= @post.id %>/play");
-     <% unless current_user.blank? %>
-          $.ajax({
-            url: "/listens",
+     // $.post("/posts/<%= @post.id %>/play");
+     // <% unless current_user.blank? %>
+     //      $.ajax({
+     //        url: "/listens",
            
-            data: {"listen": {"post_id": "<%= @post.id %>",
-                    "user_id":"<%= current_user.id %>"}},
-             method: "POST",
+     //        data: {"listen": {"post_id": "<%= @post.id %>",
+     //                "user_id":"<%= current_user.id %>"}},
+     //         method: "POST",
 
-          }).done(function() {
-            console.log('listen');
-          });
+     //      }).done(function() {
+     //        console.log('listen');
+     //      });
      
-          <% end %>
+     //      <% end %>
       
   });
 
