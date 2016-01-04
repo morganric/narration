@@ -20,7 +20,7 @@
         <h3 class="white"><%= link_to @posts.first.title, user_post_path(user_id: @posts.first.user.name, id: @posts.first.slug), class: "white" %>
         <br/>
           <small>
-          by 
+          via 
           <%= link_to @posts.first.user.name, vanity_profile_path(id: @posts.first.user.name), class: "white" %>
           </small>
         </h3>
@@ -32,7 +32,7 @@
       <div class="carousel-caption">
          <h3 class="white"><%= link_to post.title, user_post_path(user_id: post.user.name, id: post.slug), class: "white" %>
          <br/>
-          <small>by 
+          <small>via 
           <%= link_to post.user.name, vanity_profile_path(id: post.user.name), class: "white" %>
           </small>
 
