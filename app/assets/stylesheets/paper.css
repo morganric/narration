@@ -5,6 +5,22 @@
  *= require paper/bootswatch
 */
 
+.miniembed {
+      display: none !important;
+     }
+
+@media (max-height: 250px), (max-width:300px) {
+
+    .miniembed {
+      display: block !important;
+     }
+
+     .bigembed {
+      display: none !important;
+     }
+
+}
+
 .footer-nav li {
   display: inline-block;
   margin-right: 15px;
