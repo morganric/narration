@@ -21,7 +21,7 @@ after_filter :allow_iframe
   end
 
   def latest
-    @featured = Post.where(:featured => true) 
+    @featured = Post.where(:featured => true).limit(3)
     @posts = Post.all.order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10) 
   end
