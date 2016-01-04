@@ -15,7 +15,7 @@ after_filter :allow_iframe
   # GET /posts.json
   def index
     @posts = Post.all.order('plays DESC').page params[:page]
-    @featured = Post.where(:featured => true) 
+    @featured = Post.where(:featured => true).limit(3) 
     @new = Post.all.order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10) 
   end
@@ -33,7 +33,6 @@ after_filter :allow_iframe
   end
 
   def featured
-
     @posts = Post.where(:featured => true).order('created_at DESC')
   end
 
