@@ -1,4 +1,6 @@
-<div class="container">
+<div class="col-md-12">
+  
+<div class="col-md-8">
   <div class="row">
     <h3>Users</h3>
     <div class="column">
@@ -13,4 +15,24 @@
       </table>
     </div>
   </div>
+</div>
+
+
+<div class="col-md-4">
+
+<br/>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Stats</h3>
+  </div>
+  <div class="panel-body">
+  
+  Users: <%= @users.count  %>
+  <br/>
+  Posts: <%= @posts.count  %>
+    <br/>
+  Plays: <%= @plays %>
+
+  </div>
+</div>
 </div>
