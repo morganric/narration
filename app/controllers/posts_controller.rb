@@ -63,7 +63,7 @@ after_filter :allow_iframe
 
 
 
-    @post.html = '<iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="350"></iframe><br/><a href="<%= user_post_url(:user_id => @post.user.profile.slug, :id => @post.slug) %>" target="_blank"><%= @post.title %></a> via <a href="<%= vanity_profile_url(:id => @post.user.profile.slug) %>" target="_blank"><%= @post.user.profile.display_name || @post.user.name %> </a> on <a href="<%= root_url %>" target="_blank">Readio</a>.'
+    @post.html = "<iframe src='#{embed_url(:user_id => @post.user.name, :id => @post)}' frameborder='none' width='500' height='350'></iframe>"
 
     @json = @post.to_json
 
