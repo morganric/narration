@@ -20,6 +20,9 @@
 
 <meta property="og:audio:title" content="<%= @post.title %>" />
 
+<link rel="alternate" type="application/json+oembed"
+  href="<%= "#{oembed_url}?url=#{post_url}" %>" />
+
 <% end %>
 
 
