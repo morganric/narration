@@ -65,8 +65,12 @@ after_filter :allow_iframe
 
     @post.html = "<iframe src='#{embed_url(:user_id => @post.user.name, :id => @post)}' frameborder='none' width='500' height='350'></iframe>"
 
-    @json = @post.to_json
+    @json = Hash.new
 
+    @json["html"] =  "<iframe src='#{embed_url(:user_id => @post.user.name, :id => @post)}' frameborder='none' width='500' height='350'></iframe>"
+
+
+    @json = @json.to_json
 
     render layout: 'embed'
 
