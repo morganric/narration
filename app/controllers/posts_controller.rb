@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:download, :miniembed, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
+  before_action :set_post, only: [ :download, :miniembed, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
   before_filter :authenticate_user!,  except: [:miniembed, :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest, :plays]
-   before_action :admin_only, :except => [:embed, :miniembed, :destroy, :show, :page, :popular, :tag,
+   before_action :admin_only, :except => [:oembed, :embed, :miniembed, :destroy, :show, :page, :popular, :tag,
                 :edit, :index, :favourites, :update, :featured, :popout, :latest, :provider, :author, :plays]
 
    require 'embedly'
@@ -50,6 +50,26 @@ after_filter :allow_iframe
   # GET /posts/1
   # GET /posts/1.json
   def show
+  end
+
+  def oembed
+    @url = params[:url]
+
+    require 'uri'
+
+    @id = URI(@url).path.split('/').last
+
+    @post = Post.friendly.find(@id)
+
+
+
+    @post.html = '<iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="350"></iframe><br/><a href="<%= user_post_url(:user_id => @post.user.profile.slug, :id => @post.slug) %>" target="_blank"><%= @post.title %></a> via <a href="<%= vanity_profile_url(:id => @post.user.profile.slug) %>" target="_blank"><%= @post.user.profile.display_name || @post.user.name %> </a> on <a href="<%= root_url %>" target="_blank">Readio</a>.'
+
+    @json = @post.to_json
+
+
+    render layout: 'embed'
+
   end
 
   def author

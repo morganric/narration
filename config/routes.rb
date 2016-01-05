@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   get '/:user_id/:id/embed', :to => "posts#embed", as: :embed
   get '/:user_id/:id/popout', :to => "posts#popout", as: :popout
   get '/:user_id/:id/player', :to => "posts#player", as: :player
-    get '/:user_id/:id/miniembed', :to => "posts#miniembed", as: :miniembed
+  get '/:user_id/:id/miniembed', :to => "posts#miniembed", as: :miniembed
+  get '/oembed', :to => "posts#oembed", as: :oembed
 
   resources :posts
 
