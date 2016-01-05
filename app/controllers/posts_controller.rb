@@ -15,13 +15,13 @@ after_filter :allow_iframe
   # GET /posts.json
   def index
     @posts = Post.all.order('plays DESC').page params[:page]
-    @featured = Post.where(:featured => true).limit(3) 
+    @featured = Post.where(:featured => true).reverse.limit(3) 
     @new = Post.all.order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10) 
   end
 
   def latest
-    @featured = Post.where(:featured => true).limit(3)
+    @featured = Post.where(:featured => true).reverse.limit(3)
     @posts = Post.all.order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10) 
   end
