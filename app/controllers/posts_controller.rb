@@ -139,12 +139,13 @@ after_filter :allow_iframe
      embedly_api = Embedly::API.new :key => 'be7f3a535a974297b014470a23243df4'
      obj = embedly_api.oembed :url => post_params[:url]
 
-     if @post.title == ""
+
+     if params[:post][:title] == ""
         @post.title = obj[0].title
      end
 
      
-     if @post.summary == ""
+     if params[:post][:summary] == ""
         @post.summary =  obj[0].description
      end
       @post.provider = obj[0].provider_name
@@ -152,6 +153,8 @@ after_filter :allow_iframe
       @post.author = obj[0].author_name
       @post.author_url = obj[0].author_url
     end
+
+
       @post.user_id = current_user.id
       @post.plays = 0
 

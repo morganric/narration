@@ -4,7 +4,7 @@ acts_as_taggable
 paginates_per 5
 
 extend FriendlyId
-  friendly_id :title, use: :slugged
+friendly_id :title, use: :slugged
 
    before_validation :set_default_title
 
