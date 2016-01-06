@@ -138,7 +138,12 @@ after_filter :allow_iframe
     unless @post.url.blank?
      embedly_api = Embedly::API.new :key => 'be7f3a535a974297b014470a23243df4'
      obj = embedly_api.oembed :url => post_params[:url]
-     @post.title = obj[0].title
+
+     if @post.title == ""
+        @post.title = obj[0].title
+     end
+
+     
      if @post.summary == ""
         @post.summary =  obj[0].description
      end
