@@ -73,8 +73,9 @@
 <div class="col-md-8">
 
 <h2 >
-  <%= link_to raw("#{@post.title}"), @post.url, target: "_blank", class:"link" %>
-  <small><%= link_to raw("<i class='glyphicon glyphicon-share' ></i>"), @post.url, target: "_blank", class:"link" %></small>
+  <%= @post.title %>
+  <%#= link_to raw("#{@post.title}"), @post.url, target: "_blank", class:"link" %>
+  <!-- <small><%#= link_to raw("<i class='glyphicon glyphicon-share' ></i>"), @post.url, target: "_blank", class:"link" %></small> -->
 
 </h2>
 
@@ -146,7 +147,11 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
  <% unless @post.summary.blank? %>
 <p class="well">
   <%= @post.summary %>
+  <br/>
+  <br/>
+  <%= link_to raw("#{@post.title}"), @post.url, target: "_blank", class:"link" %>
 </p>
+
 <% end %>
 
  
