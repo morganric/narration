@@ -246,6 +246,19 @@ $("#jquery_jplayer_audio_1").jPlayer({
         m4a: "<%= @post.audio || @post.audio_link %>"
       });
       $("#jquery_jplayer_audio_1").jPlayer('play');
+      <% unless current_user.blank? %>
+          $.ajax({
+            url: "/listens",
+           
+            data: {"listen": {"post_id": "<%= @post.id %>",
+                    "user_id":"<%= current_user.id %>"}},
+             method: "POST",
+
+          }).done(function() {
+            console.log('listen');
+          });
+     
+          <% end %>
     },
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");
