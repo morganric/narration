@@ -149,7 +149,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <%= @post.summary %>
   <br/>
   <br/>
-  <%= link_to raw("#{@post.title}"), @post.url, target: "_blank", class:"link" %>
+  <%= link_to @post.url, @post.url, target: "_blank", class:"link" %>
 </p>
 
 <% end %>
