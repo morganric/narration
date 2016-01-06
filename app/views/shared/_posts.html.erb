@@ -24,6 +24,10 @@
         <br/>
       </h4>
 
+      <p>
+        <%= truncate(post.summary, :length => 140) %>
+      </p>
+
           <h5 class="hidden">
           <% unless post.author.blank? %>
      
