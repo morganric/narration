@@ -157,10 +157,26 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <%= image_tag @post.image.url(:square) || @post.user.profile.image.url(:square) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png", class: "img-responsive" %>
 
     <br/>
-     <a type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+     <a type="button" class="btn btn-primary btn-block hidden" data-toggle="modal" data-target="#myModal">
     <i class="glyphicon glyphicon-menu-left"></i>/<i class="glyphicon glyphicon-menu-right"></i> Embed
   </a>
-  <br/>
+
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="glyphicon glyphicon-share-alt"></i> Share </h3>
+  </div>
+  <div class="panel-body">
+
+<ul class="nav social" style="padding-left:40px;">
+  <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 80)}") %></li>
+  <li style="postion:absolute; top:-6px;">
+    <%= like_button("1440239169528450", send: true, :url => post_url( :id => @post.id), layout: :button) %></li>
+  
+  </ul>
+
+</div>
+</div>
+
 
   <% if user_signed_in? %>
     <% if current_user.try(:admin?)  %>
@@ -179,20 +195,6 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <% end %>
 
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><i class="glyphicon glyphicon-share-alt"></i> Share </h3>
-  </div>
-  <div class="panel-body">
-
-<ul class="nav social" style="padding-left:40px;">
-  <li style="postion:absolute; top:-6px;"><%= like_button("1440239169528450", send: true, :url => post_url( :id => @post.id), layout: :button) %></li>
-  <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 80)}") %></li>
-  <li><%= pinit_button %></li>
-  </ul>
-
-</div>
-</div>
 
 
 
@@ -237,6 +239,7 @@ $("#jquery_jplayer_audio_1").jPlayer({
         title: "<%= @post.title %>",
         m4a: "<%= @post.audio || @post.audio_link %>"
       });
+      $("#jquery_jplayer_audio_1").jPlayer('play');
     },
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");

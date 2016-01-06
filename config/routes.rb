@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated do
-    root to: "pages#welcome"
+    root to: "posts#index"
   end
 
 end

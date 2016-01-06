@@ -24,7 +24,7 @@
         <br/>
       </h4>
 
-          <h5>
+          <h5 class="hidden">
           <% unless post.author.blank? %>
      
             by <%= link_to post.author, author_path(author: post.author) %> 
@@ -37,7 +37,7 @@
           <% end %>
                 </h5>
 
-      <h6>
+      <h6 class="hidden">
       via   <%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile.slug) %>
       </h6>
 

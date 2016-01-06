@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [ :download, :miniembed, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
-  before_filter :authenticate_user!,  except: [:miniembed, :show, :featured, :embed, 
+  before_filter :authenticate_user!,  except: [:index, :miniembed, :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest, :plays]
    before_action :admin_only, :except => [:oembed, :embed, :miniembed, :destroy, :show, :page, :popular, :tag,
                 :edit, :index, :favourites, :update, :featured, :popout, :latest, :provider, :author, :plays]
