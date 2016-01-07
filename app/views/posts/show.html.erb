@@ -78,7 +78,7 @@
   <!-- <small><%#= link_to raw("<i class='glyphicon glyphicon-share' ></i>"), @post.url, target: "_blank", class:"link" %></small> -->
 
 </h2>
-
+<hr/>
 <% unless @post.author.blank? && @post.provider.blank? %>
 <h3 class="hidden">
     <% unless @post.author.blank? %>
@@ -130,9 +130,13 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
             <div class="jp-seek-bar">
               <div class="jp-play-bar"></div>
               <div class="jp-details"><span class="jp-title" aria-label="title"></span></div>
-              <div class="jp-timing"><span class="jp-duration" role="timer" aria-label="duration"></span>
+
+              <div class="jp-timing">
+                  <span class="jp-current-time " role="timer" aria-label="time" style="font-size: 18px; float:left; margin-top:30px;">&nbsp;</span>
+                  <span class="jp-duration" role="timer" aria-label="duration"></span>
 
               </div>
+
 
             </div>
           </div>
@@ -149,7 +153,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <%= @post.summary %>
   <br/>
   <br/>
-  <%= link_to @post.url, @post.url, target: "_blank", class:"link" %>
+  <%= link_to @post.url, @post.url, target: "_blank"   %>
 </p>
 
 <% end %>
