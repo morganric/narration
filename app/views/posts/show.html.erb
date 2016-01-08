@@ -179,8 +179,8 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 
 <ul class="nav social" style="padding-left:40px;">
   <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 80)}") %></li>
-  <li style="postion:absolute; top:-6px;">
-    <%= like_button("1440239169528450", send: true, :url => post_url( :id => @post.id), layout: :button) %></li>
+  <li style="postion:absolute; top:-7px;">
+    <%= like_button("791234167672701", send: true, :href => post_url( :id => @post.id), layout: :button) %></li>
   
   </ul>
 
