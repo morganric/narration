@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   mount Upmin::Engine => '/admin'
   mount Maktoub::Engine => '/news'
 
-  get "pages/about" => "pages#about", as: :about
-  get "pages/welcome" => "pages#welcome", as: :welcome
+  get "about" => "pages#about", as: :about
+  get "welcome" => "pages#welcome", as: :welcome
   get "author/:author" => "posts#author", as: :author
   get "provider/:provider" => "posts#provider", as: :provider
   get "featured" => "posts#featured", as: :featured
