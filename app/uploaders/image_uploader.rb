@@ -79,6 +79,17 @@ class ImageUploader < CarrierWave::Uploader::Base
              :gravity => :center }]
   end
 
+   version :facebook do
+      process :eager => true
+    # process :resize_to_fill => [600, 600]
+
+
+    cloudinary_transformation :transformation =>[
+        {:width => 470, :height => 470, :crop => :fill}, 
+        {  :overlay => "play.png", crop: :fill, :width=>0.25, :height=>0.25, :flags=>:relative,
+             :gravity => :center }]
+  end
+
     version :twitter_card do
       process :eager => true
     # process :resize_to_fill => [600, 600]
