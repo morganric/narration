@@ -13,6 +13,9 @@ mount_uploader :banner, ImageUploader
 
 has_many :listens, :dependent => :destroy
 
+has_many :user_favs
+has_many :favourited_by, through: :user_favs, :source => :user
+has_many :favourites, through: :user_favs, :source => :user
 
 belongs_to :user
 

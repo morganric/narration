@@ -25,6 +25,9 @@ Rails.application.routes.draw do
 
   get "posts/:id/download", :to => 'posts#download', as: :post_download
 
+  post 'user_favs' => 'user_favs#create', :as => 'user_favs'
+  delete 'user_favs' => 'user_favs#destroy', :as => 'delete_user_favs'
+
 
  devise_for :users, controllers: { registrations: "users/registrations" }
   resources :users
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
     get '/', to: 'profiles#show', :as =>  :vanity_profile
     get '/about', to: 'profiles#about', as: :about_profile
     get '/listens', to: 'profiles#listens', as: :listens_profile
+    get '/favourites', to: 'profiles#favourites', as: :user_favourites
     
   end
 

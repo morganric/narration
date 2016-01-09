@@ -38,7 +38,7 @@
 <hr/>
 <div>
 <ul class="nav nav-pills" id="myTabs">
-  <li class="active"><a href="<%= vanity_profile_url(@profile.slug) %>" >
+  <li class=""><a href="<%= vanity_profile_url(@profile.slug) %>" >
     <i class="glyphicon glyphicon-upload" ></i> Uploads
   </a></li>
   <li><a href="<%= about_profile_url(@profile.slug) %>" >
@@ -47,7 +47,7 @@
   <li ><a href="<%= listens_profile_url(@profile.slug) %>" >
   <i class="glyphicon glyphicon-headphones" ></i> Listens
   </a></li>
-  <li class=""><a href="<%= user_favourites_path(@profile.slug) %>" ><i class="glyphicon glyphicon-heart" ></i> Favourites</a></li>
+  <li class="active"><a href="<%= user_favourites_path(@profile.slug) %>" ><i class="glyphicon glyphicon-heart" ></i> Favourites</a></li>
 
 </ul>
 </div>

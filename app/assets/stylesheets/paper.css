@@ -242,7 +242,8 @@ ul.social li {
   height: 100%;
 
   /* define your played progress bar background color here */
-  background-color: #5bc0de;
+  background-color: #4caf50;
+  opacity: 0.5;
 }
 
 .jp-flat-audio .jp-details,

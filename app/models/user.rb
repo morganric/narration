@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
    has_many :listens, :dependent => :destroy
    has_many :listenings, :through => :listens, :source => :post
 
+   has_many :user_favs
+  has_many :favourites, through: :user_favs, :source => :post
+
 
   def create_profile
     @profile = Profile.new(:user_id => id)

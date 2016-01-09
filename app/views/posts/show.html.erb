@@ -125,11 +125,13 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
             Update your browser or Flash plugin
           </div>
         </div>
-
-        <p>
-<h5>
+<p>
+<h6>
   <label class='label label-success'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
   </label>&nbsp;
+
+  <label class='label label-info'><i class="glyphicon glyphicon-heart" ></i> <%= pluralize(@post.favourites.count, 'favourite') %>
+      </label>&nbsp;
 
   <% if user_signed_in? %>
     <% if current_user.try(:admin?)  %>
@@ -145,11 +147,10 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <i class="glyphicon glyphicon-tag" ></i>&nbsp;
   <%= link_to "##{tag}", tag_path(tag: tag), :class=>"white"%></label>&nbsp;
 <% end %>
-</h5>
+</h6>
 </p>
 
 
-<br/>
  <% unless @post.summary.blank? %>
 <p class="well">
   <%= @post.summary %>
@@ -167,11 +168,40 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <br/>
 
   <%= image_tag @post.image.url(:square) || @post.user.profile.image.url(:square) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png", class: "img-responsive" %>
+  <br/>
 
-    <br/>
-     <a type="button" class="btn btn-primary btn-block hidden" data-toggle="modal" data-target="#myModal">
-    <i class="glyphicon glyphicon-menu-left"></i>/<i class="glyphicon glyphicon-menu-right"></i> Embed
-  </a>
+  <div class="btn-group btn-group-justified">
+    <% if user_signed_in? %>
+    <% if  UserFav.where(:user_id => current_user.id, :post_id => @post.id).exists? %>
+            <%= link_to raw("<i class='glyphicon glyphicon-heart-empty'></i>"), delete_user_favs_path(:user_fav => {:post_id => @post.id, :user_id => current_user.id}), :remote => true, class: "btn fav btn-info", :method => :delete %>
+        <% else %>
+          <%= link_to raw("<i class='glyphicon glyphicon-heart'></i>"), user_favs_path(:user_fav => {:post_id => @post.id,:user_id => current_user.id}), :remote => true, class: "btn fav btn-info", :method => :post %>
+    <% end %>
+   <% end %>
+  
+    <a type="button" class="btn btn-primary  " data-toggle="modal" data-target="#myModal">
+      <i class="glyphicon glyphicon-menu-left"></i>/<i class="glyphicon glyphicon-menu-right"></i>
+    </a>
+
+
+    <% if user_signed_in? %>
+      <% if current_user.try(:admin?)  %>
+        <%= link_to raw('<i class="glyphicon glyphicon-download" ></i>'), post_download_url, class: "btn btn-warning" %>
+      <% end %>
+    <% end %> 
+
+    <% if user_signed_in? %>
+      <% if current_user.try(:admin?) || current_user == @post.user %>
+        <%= link_to raw('<i class="glyphicon glyphicon-wrench" ></i>'), edit_post_path(@post), class: "btn btn-default" %>
+
+        <%= link_to raw('<i class="glyphicon glyphicon-trash" ></i>'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+
+      <% end %>
+    <% end %>
+
+  </div>
+<br>
+
 
   <div class="panel panel-default">
   <div class="panel-heading">
@@ -190,28 +220,8 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 </div>
 
 
-  <% if user_signed_in? %>
-    <% if current_user.try(:admin?)  %>
-      <%= link_to raw('<i class="glyphicon glyphicon-download" ></i> Download'), post_download_url, class: "btn btn-block btn-warning" %>
-    <% end %>
-  <% end %> 
-
-  <% if user_signed_in? %>
-    <% if current_user.try(:admin?) || current_user == @post.user %>
-         <br/>
-      <%= link_to raw('<i class="glyphicon glyphicon-wrench" ></i> Edit'), edit_post_path(@post), class: "btn btn-block btn-default" %>
-      <br/>
-      <%= link_to raw('<i class="glyphicon glyphicon-trash" ></i> Delete'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-block btn-danger" %>
-        <br/>
-    <% end %>
-  <% end %>
-
-
-
-
-
 <% unless @post.listens.blank? %>
-<div class="panel panel-default">
+<div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title"><i class="glyphicon glyphicon-headphones"></i>  Listeners </h3>
   </div>
@@ -232,7 +242,23 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 
 <% end %>
 
-<br/>
+
+<% unless @post.favourited_by.blank? %>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="glyphicon glyphicon-heart"></i>  Favourited By </h3>
+  </div>
+  <div class="panel-body">
+    
+      <% @post.favourited_by.each do |user| %>
+        <span data-toggle="tooltip" data-placement="top" title="<%= user.profile.display_name %>" >
+        <%= link_to image_tag(user.profile.image.url(:listener), class: "img-circle"), vanity_profile_path(id: user.name)  %>
+        </span>
+      <% end %>
+
+    </div>
+</div>
+<% end %>
 
 </div>  
 

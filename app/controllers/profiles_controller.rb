@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:about, :listens, :show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:favourites, :about, :listens, :show, :edit, :update, :destroy]
   before_action :authenticate_user!, :except => [:show, :about, :listens, :page, :popular, :favourites, :index]
   before_action :admin_only, :except => [:show, :about, :listens, :page, :popular, :edit, :favourites, :update]
 
@@ -17,7 +17,10 @@ class ProfilesController < ApplicationController
   def show
     @posts = Post.where(:user_id => @profile.user.id).order('created_at DESC').page params[:page]
   
-    
+  end
+
+  def favourites
+    @posts = @profile.user.favourites.order('created_at DESC').page params[:page]
 
   end
 
