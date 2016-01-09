@@ -4,6 +4,14 @@
  *= require paper/loader
  *= require paper/bootswatch
 */
+/*
+  body {
+    content: '';
+    background-image: url('http://res.cloudinary.com/narration/image/upload/v1452350191/space_jddngw.jpg') !important;
+    background-size: cover;
+  }
+
+*/
 
 .miniembed {
       display: none !important;

@@ -23,7 +23,6 @@
       <ul class="nav social" style="padding-left:40px;">
         <li style="postion:absolute; top:-6px;"><%= like_button("1440239169528450", send: true, :url => vanity_profile_url(id: @profile.user.name), layout: :button) %></li>
         <li><%= tweet_button(count: 'inline', :url => vanity_profile_url(id: @profile.user.name), via: "narrated_org", text: @profile.display_name) %></li>
-        <li><%= pinit_button %></li>
         </ul>
 
       </div>

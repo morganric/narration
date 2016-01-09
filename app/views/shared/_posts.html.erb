@@ -11,7 +11,7 @@
 
 			<li class="panel">
 
-      <span class="pull-right" style="margin-right:25px;" >
+      <span class="pull-right hidden" style="margin-right:25px;" >
       <h2><%= index+x+1 %></h2>
     </span>
 
@@ -45,7 +45,7 @@
       via   <%= link_to post.user.profile.display_name, vanity_profile_path(:id => post.user.profile.slug) %>
       </h6>
 
-      <h6>
+      <h5>
           <label class='label label-primary'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(post.plays, 'play') %>
   			</label>&nbsp;
           <%  post.tags.limit(5).each do |tag| %>
@@ -53,7 +53,7 @@
 			  <i class="glyphicon glyphicon-tag" ></i>&nbsp;
 			  <%= link_to "##{tag}", tag_path(tag: tag.name), :class=>"white"%></label>&nbsp;
 			<% end %>
-			</h6>
+			</h5>
       </div>
           </li>
 	    <% end %>
