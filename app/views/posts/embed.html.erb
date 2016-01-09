@@ -71,8 +71,8 @@
        <h6>
           <label class='label label-success'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
         </label>&nbsp;
-          <%  @post.tags.limit(5).each do |tag| %>
-        <label class="label label-default">
+          <%  @post.tags.limit(3).each do |tag| %>
+        <label class="label label-primary">
         <i class="glyphicon glyphicon-tag" ></i>&nbsp;
         <%= link_to "##{tag}", tag_path(tag: tag.name), :class=>"white", target: "_blank" %></label>&nbsp;
       <% end %>
