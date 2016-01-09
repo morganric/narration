@@ -52,7 +52,7 @@
 			  <div class="panel-body">
 	
 	 <% @top.each do |tag| %>
-	 	<label class="label label-default pull-left" style="font-size:14px; margin-right: 5px;">
+	 	<label class="label label-primary pull-left" style="font-size:14px; margin-right: 5px;">
 			  <i class="glyphicon glyphicon-tag" ></i>&nbsp; 
 			  <%= link_to "##{tag}", tag_path(tag: tag.name), :class=>"white"%></label>&nbsp;
 	 <% end %>

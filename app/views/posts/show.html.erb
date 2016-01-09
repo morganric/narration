@@ -95,27 +95,7 @@
 via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @post.user.profile.slug) %>
 </h4>
 
-<p>
-<h5>
-  <label class='label label-primary'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
-  </label>&nbsp;
 
-  <% if user_signed_in? %>
-    <% if current_user.try(:admin?)  %>
-
-      <label class='label label-warning'><i class="glyphicon glyphicon-download" ></i> <%= pluralize(@post.downloads, 'download') %>
-      </label>&nbsp;
-    
-    <% end %>
-  <% end %>      
-
-   <%  @post.tag_list[0..2].each do |tag| %>
-  <label class="label label-default">
-  <i class="glyphicon glyphicon-tag" ></i>&nbsp;
-  <%= link_to "##{tag}", tag_path(tag: tag), :class=>"white"%></label>&nbsp;
-<% end %>
-</h5>
-</p>
 
 
 <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
@@ -145,6 +125,28 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
             Update your browser or Flash plugin
           </div>
         </div>
+
+        <p>
+<h5>
+  <label class='label label-success'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
+  </label>&nbsp;
+
+  <% if user_signed_in? %>
+    <% if current_user.try(:admin?)  %>
+
+      <label class='label label-warning'><i class="glyphicon glyphicon-download" ></i> <%= pluralize(@post.downloads, 'download') %>
+      </label>&nbsp;
+    
+    <% end %>
+  <% end %>      
+
+   <%  @post.tag_list[0..2].each do |tag| %>
+  <label class="label label-primary">
+  <i class="glyphicon glyphicon-tag" ></i>&nbsp;
+  <%= link_to "##{tag}", tag_path(tag: tag), :class=>"white"%></label>&nbsp;
+<% end %>
+</h5>
+</p>
 
 
 <br/>
