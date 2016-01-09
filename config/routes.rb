@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get "posts/:id/download", :to => 'posts#download', as: :post_download
 
 
-  devise_for :users
+ devise_for :users, controllers: { registrations: "users/registrations" }
   resources :users
 
 

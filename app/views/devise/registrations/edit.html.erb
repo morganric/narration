@@ -28,13 +28,20 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
     </fieldset>
-    <fieldset>
+    <div class="form-group">
+      <%= f.label "unsubscribe from newsletter" %>
+      <br/>
+      <%= f.check_box :unsubscribe, class: '' %>
+      <br/>
+    </div>
+    <fieldset>  
       <p>You must enter your current password to make changes.</p>
       <div class="form-group">
         <%= f.label :current_password %>
         <%= f.password_field :current_password, class: 'form-control' %>
       </div>
     </fieldset>
+     <hr/>
     <%= f.submit 'Update', :class => 'button btn right' %>
   <% end %>
 </div>

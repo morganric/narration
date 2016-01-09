@@ -11,13 +11,17 @@ Maktoub.app_name = "Narrated.org" # your app name
 # pass a block to subscribers_extractor that returns an object that  reponds to :name and :email
 # (fields can be configured as shown below)
 
+users = []
+
 require "ostruct"
 Maktoub.subscribers_extractor do
-  User.all.map do |i|
+  User.all.each do |i|
+  	if i.unsubscribe == false
     users << OpenStruct.new({name: "#{i.name}", email: "#{i.email}"})
+	end
   end
 end
 
 # uncomment lines below to change subscriber fields that contain email and
-	Maktoub.email_field = :address
-	Maktoub.name_field = :nickname
+	# Maktoub.email_field = :email
+	# Maktoub.name_field = :name

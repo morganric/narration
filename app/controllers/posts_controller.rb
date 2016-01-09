@@ -17,7 +17,8 @@ after_filter :allow_iframe
     @posts = Post.all.order('plays DESC').page params[:page]
     @featured = Post.where(:featured => true).order('created_at DESC').limit(3)
     @new = Post.all.order('created_at DESC').page params[:page]
-    @top = ActsAsTaggableOn::Tag.most_used(10) 
+    @top = ActsAsTaggableOn::Tag.most_used(10)
+    @listens = Listen.all.order('created_at DESC')
   end
 
   def latest

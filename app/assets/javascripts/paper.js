@@ -7,3 +7,6 @@
 //= require 'jquery.jplayer'
 //= require zeroclipboard
 
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
