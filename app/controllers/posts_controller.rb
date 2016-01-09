@@ -25,12 +25,15 @@ after_filter :allow_iframe
     @featured = Post.where(:featured => true).order('created_at DESC').limit(3)
     @posts = Post.all.order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10) 
+    @listens = Listen.all.order('created_at DESC')
   end
 
   def tag
+    @featured = Post.where(:featured => true).order('created_at DESC').limit(3)
     @tag = params[:tag]
     @posts = Post.tagged_with(@tag).page params[:page]  
     @top = ActsAsTaggableOn::Tag.most_used(10) 
+    @listens = Listen.all.order('created_at DESC')
   end
 
   def featured
