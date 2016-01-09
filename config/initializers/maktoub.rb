@@ -15,10 +15,10 @@ users = []
 
 require "ostruct"
 Maktoub.subscribers_extractor do
-  User.all.each do |i|
-  	if i.unsubscribe == false
+  User.where(:unsubscribe => false).each do |i|
+  	# if i.unsubscribe == false
     users << OpenStruct.new({name: "#{i.name}", email: "#{i.email}"})
-	end
+	# end
   end
 end
 
