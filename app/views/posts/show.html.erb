@@ -130,8 +130,12 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <label class='label label-success'><i class="glyphicon glyphicon-play" ></i> <%= pluralize(@post.plays, 'play') %>
   </label>&nbsp;
 
+  <% unless @post.favourites.count == 0 %>
+    
+
   <label class='label label-info'><i class="glyphicon glyphicon-heart" ></i> <%= pluralize(@post.favourites.count, 'favourite') %>
       </label>&nbsp;
+      <% end %>
 
   <% if user_signed_in? %>
     <% if current_user.try(:admin?)  %>

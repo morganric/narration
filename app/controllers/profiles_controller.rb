@@ -15,12 +15,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @posts = Post.where(:user_id => @profile.user.id).order('created_at DESC').page params[:page]
+    @posts = Post.where(hidden: false).where(:user_id => @profile.user.id).order('created_at DESC').page params[:page]
   
   end
 
   def favourites
-    @posts = @profile.user.favourites.order('created_at DESC').page params[:page]
+    @posts = @profile.user.favourites.where(hidden: false).order('created_at DESC').page params[:page]
 
   end
 
@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
 
   def listens
 
-    @listens = @profile.user.listenings.page params[:page]
+    @listens = @profile.user.listenings.where(hidden: false).page params[:page]
 
   end
 

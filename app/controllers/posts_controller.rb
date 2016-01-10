@@ -15,30 +15,30 @@ after_filter :allow_iframe
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order('plays DESC').page params[:page]
-    @featured = Post.where(:featured => true).order('created_at DESC').limit(3)
-    @new = Post.all.order('created_at DESC').page params[:page]
+    @posts = Post.where(hidden: false).order('plays DESC').page params[:page]
+    @featured = Post.where(hidden: false).where(:featured => true).order('created_at DESC').limit(3)
+    @new = Post.where(hidden: false).order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10)
     @listens = Listen.all.order('created_at DESC')
   end
 
   def latest
-    @featured = Post.where(:featured => true).order('created_at DESC').limit(3)
-    @posts = Post.all.order('created_at DESC').page params[:page]
+    @featured = Post.where(hidden: false).where(:featured => true).order('created_at DESC').limit(3)
+    @posts = Post.where(hidden: false).order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10) 
     @listens = Listen.all.order('created_at DESC')
   end
 
   def tag
-    @featured = Post.where(:featured => true).order('created_at DESC').limit(3)
+    @featured = Post.where(hidden: false).where(:featured => true).order('created_at DESC').limit(3)
     @tag = params[:tag]
-    @posts = Post.tagged_with(@tag).page params[:page]  
+    @posts = Post.where(hidden: false).tagged_with(@tag).page params[:page]  
     @top = ActsAsTaggableOn::Tag.most_used(10) 
     @listens = Listen.all.order('created_at DESC')
   end
 
   def featured
-    @posts = Post.where(:featured => true).order('created_at DESC')
+    @posts = Post.where(hidden: false).where(:featured => true).order('created_at DESC')
   end
 
 
@@ -85,12 +85,12 @@ after_filter :allow_iframe
 
   def author
     @author = params[:author]
-    @posts = Post.where(:author => @author).page params[:page]
+    @posts = Post.where(hidden: false).where(:author => @author).page params[:page]
   end
 
   def provider
     @provider = params[:provider]
-    @posts = Post.where(:provider => @provider).page params[:page]
+    @posts = Post.where(hidden: false).where(:provider => @provider).page params[:page]
   end
 
   # GET 
