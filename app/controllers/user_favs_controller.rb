@@ -1,6 +1,6 @@
 class UserFavsController < ApplicationController
 	before_filter :authenticate_user!
-	# after_action :fav_email, only: :create
+	after_action :fav_email, only: :create
 	# after_action :fav_action, only: :create
 	# after_action :fav_tweet, only: :create
 

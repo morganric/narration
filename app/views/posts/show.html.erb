@@ -229,7 +229,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 
    <!--  <ul class="nav social" style="padding-left:40px;"> -->
     
-      <% @post.listens.each do |listen| %>
+      <% @post.listens.limit(5).each do |listen| %>
         <span data-toggle="tooltip" data-placement="top" title="<%= listen.user.profile.display_name %>" >
         <%= link_to image_tag(listen.user.profile.image.url(:listener), class: "img-circle"), vanity_profile_path(id: listen.user.name)  %>
         </span>
@@ -250,7 +250,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   </div>
   <div class="panel-body">
     
-      <% @post.favourited_by.each do |user| %>
+      <% @post.favourited_by.limit(5).each do |user| %>
         <span data-toggle="tooltip" data-placement="top" title="<%= user.profile.display_name %>" >
         <%= link_to image_tag(user.profile.image.url(:listener), class: "img-circle"), vanity_profile_path(id: user.name)  %>
         </span>
@@ -278,37 +278,25 @@ $("#jquery_jplayer_audio_1").jPlayer({
         m4a: "<%= @post.audio || @post.audio_link %>"
       });
       $("#jquery_jplayer_audio_1").jPlayer('play');
-      <% unless current_user.blank? %>
-          $.ajax({
-            url: "/listens",
-           
-            data: {"listen": {"post_id": "<%= @post.id %>",
-                    "user_id":"<%= current_user.id %>"}},
-             method: "POST",
-
-          }).done(function() {
-            console.log('listen');
-          });
-     
-          <% end %>
+      
     },
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");
       console.log('play');
-      $.post("/posts/<%= @post.id %>/play");
-     <% unless current_user.blank? %>
-          $.ajax({
-            url: "/listens",
+      // $.post("/posts/<%= @post.id %>/play");
+     // <% unless current_user.blank? %>
+     //      $.ajax({
+     //        url: "/listens",
            
-            data: {"listen": {"post_id": "<%= @post.id %>",
-                    "user_id":"<%= current_user.id %>"}},
-             method: "POST",
+     //        data: {"listen": {"post_id": "<%= @post.id %>",
+     //                "user_id":"<%= current_user.id %>"}},
+     //         method: "POST",
 
-          }).done(function() {
-            console.log('listen');
-          });
+     //      }).done(function() {
+     //        console.log('listen');
+     //      });
      
-          <% end %>
+     //      <% end %>
     },
     timeFormat: {
       padMin: false
@@ -330,7 +318,20 @@ $("#jquery_jplayer_audio_1").jPlayer({
     },
     wmode: "window",
     ended: function() { // Avoid multiple jPlayers playing together.
-      $.ajax("/posts/<%= @post.id %>/play");
+      // $.ajax("/posts/<%= @post.id %>/play");
+      <% unless current_user.blank? %>
+          $.ajax({
+            url: "/listens",
+           
+            data: {"listen": {"post_id": "<%= @post.id %>",
+                    "user_id":"<%= current_user.id %>"}},
+             method: "POST",
+
+          }).done(function() {
+            console.log('listen');
+          });
+     
+          <% end %>
       
     }
   });

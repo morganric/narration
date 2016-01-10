@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
    require 'embedly'
   require 'json'
+  include Curbit::Controller
 
 after_filter :allow_iframe
 
@@ -54,6 +55,8 @@ after_filter :allow_iframe
   # GET /posts/1
   # GET /posts/1.json
   def show
+
+
   end
 
   def oembed
@@ -133,6 +136,8 @@ after_filter :allow_iframe
     end
 
   end
+
+  rate_limit :plays, :max_calls => 1, :time_limit => 30.seconds, :wait_time => 5.minute
 
   # POST /posts
   # POST /posts.json

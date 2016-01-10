@@ -1,0 +1,9 @@
+  <h1>Hello <%= @owner.profile.display_name.capitalize || @owner.name.capitalize %></h1>
+                        <p>
+                          <%= link_to @user.profile.display_name, vanity_profile_url(@user.profile.slug) %> favourited your post on narrateg.org;
+                        </p>
+                        <p>
+                          <%= link_to @title, @url %>.
+                        </p>
+                        <p>Thanks!</p>
+                        The Narrated.org Team

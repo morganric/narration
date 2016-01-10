@@ -10,7 +10,7 @@
    
   <% if user_signed_in? %>
     <% if current_user.try(:admin?) || current_user == @profile.user %>
-        <%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-block" %>
+        <%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-block btn-pr" %>
     <% end %>
   <% end %> 
   <br/>
@@ -32,7 +32,7 @@
 
 <div class="col-md-8">
 
-<h2>
+<h2 class="">
   <%= @profile.display_name || @profile.username %>
 </h2>
 <hr/>
