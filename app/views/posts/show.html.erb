@@ -177,7 +177,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <div class="btn-group btn-group-justified">
     <% if user_signed_in? %>
     <% if  UserFav.where(:user_id => current_user.id, :post_id => @post.id).exists? %>
-            <%= link_to raw("<i class='glyphicon glyphicon-heart-empty'></i>"), delete_user_favs_path(:user_fav => {:post_id => @post.id, :user_id => current_user.id}), :remote => true, class: "btn fav btn-info", :method => :delete %>
+            <%= link_to raw("<i class='glyphicon glyphicon-heart-empty'></i>"), delete_user_favs_path(:user_fav => {:post_id => @post.id, :user_id => current_user.id}), :remote => true, class: "btn fav disabled btn-info", :method => :delete %>
         <% else %>
           <%= link_to raw("<i class='glyphicon glyphicon-heart'></i>"), user_favs_path(:user_fav => {:post_id => @post.id,:user_id => current_user.id}), :remote => true, class: "btn fav btn-info", :method => :post %>
     <% end %>
@@ -369,7 +369,9 @@ $("#jquery_jplayer_audio_1").jPlayer({
 
   
   $('.fav').on('click', function(e){
-          location.reload();
+        e.preventDefault();
+
+          $('.fav').toggle();
   });
 
   $(".link").on('click', function(e) {
