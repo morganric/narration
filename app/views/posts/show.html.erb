@@ -278,6 +278,14 @@ $("#jquery_jplayer_audio_1").jPlayer({
         m4a: "<%= @post.audio || @post.audio_link %>"
       });
       $("#jquery_jplayer_audio_1").jPlayer('play');
+
+      setTimeout(
+        function() 
+        {
+          //do something special
+          $.post("/posts/<%= @post.id %>/play");
+        }, 300000);
+      
       
     },
     play: function() { // Avoid multiple jPlayers playing together.
