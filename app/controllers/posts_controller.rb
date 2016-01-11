@@ -56,6 +56,9 @@ after_filter :allow_iframe
   # GET /posts/1.json
   def show
 
+    unless @post.listeners.blank?
+      @posts = @post.listeners.first.favourites.page params[:page]
+    end
 
   end
 

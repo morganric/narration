@@ -165,8 +165,13 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 
 <% end %>
 
- 
+<br/>
+ <% unless @posts.blank? %>
+ <h4>Listeners also enjoyed</h4>
+ <hr/>
+ <%= render 'shared/posts', :posts => @posts %>
 
+<% end %>
 </div>
 <div class="col-md-4 text-center">
   <br/>
