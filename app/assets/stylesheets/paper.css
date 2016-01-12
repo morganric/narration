@@ -5,6 +5,10 @@
  *= require paper/bootswatch
 */
 
+.nav-filter {
+  padding-bottom: 10px !important;
+}
+
 .nav-filter li {
   display: inline-block !important;
 }
