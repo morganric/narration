@@ -14,6 +14,8 @@ class UsersController < ApplicationController
         @plays = @plays.to_i + post.plays.to_i
     end
 
+    @favs = UserFav.all
+
 
   end
 
