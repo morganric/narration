@@ -19,6 +19,8 @@
   margin-top: 10px;
   display: block;
   background-size: 100%;
+  margin-right: 5px;
+  margin-left: 15px;
 }
 
 .logo:hover {
