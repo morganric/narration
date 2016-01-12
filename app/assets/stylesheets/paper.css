@@ -19,6 +19,16 @@
   background-position-y: 40px; 
 }
 
+a {
+  color: #4caf50 !important;
+}
+
+.nav-pills > li.active > a, .pagination > .active > a {
+  background-color: #4caf50 !important;
+  color: white !important;
+  border-color: #4caf50 !important ;
+}
+
   body {
     content: '';
     /*background-image: url('http://res.cloudinary.com/narration/image/upload/v1452350191/space_jddngw.jpg') !important;
