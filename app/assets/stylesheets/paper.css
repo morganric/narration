@@ -14,8 +14,8 @@
 
 .logo {
   background-image: url('http://res.cloudinary.com/narration/image/upload/v1452628046/Narrated_logo_dkc3ey.png');
-  width: 160px;
-  height:40px;
+  width: 136px;
+  height:34px;
   margin-top: 10px;
   display: block;
   background-size: 100%;
@@ -25,7 +25,7 @@
 
 .logo:hover {
   background-position-x: 0px; 
-  background-position-y: 40px; 
+  background-position-y: 34px; 
 }
 
 a {
