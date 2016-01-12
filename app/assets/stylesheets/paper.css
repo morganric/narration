@@ -5,6 +5,14 @@
  *= require paper/bootswatch
 */
 
+.nav-filter li {
+  display: inline-block !important;
+}
+
+.nav-filter li.active {
+  text-decoration: underline;
+}
+
 .btn {
   color: white !important;
 }
