@@ -11,7 +11,7 @@
    
   <% if user_signed_in? %>
     <% if current_user.try(:admin?) || current_user == @profile.user %>
-        <%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-block" %>
+        <%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-block btn-default" %>
     <% end %>
   <% end %> 
   <br/>
