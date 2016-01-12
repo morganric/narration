@@ -24,6 +24,10 @@
   color: grey !important;
 }
 
+.navbar ul li a:hover {
+  font-weight: bold;
+}
+
 .logo {
   background-image: url('http://res.cloudinary.com/narration/image/upload/v1452637738/narratedorglogo.png');
   width: 211px;
@@ -32,8 +36,10 @@
   padding: 6px;
   display: block;
   background-size: 100%;
-  margin-right: 5px;
-  margin-left: 10px;
+  margin-top: 7px;
+    margin-right: 7px;
+    margin-bottom: 7px;
+    margin-left: 15px
 }
 
 .logo:hover {
