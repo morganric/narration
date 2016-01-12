@@ -21,19 +21,20 @@
 }
 
 .logo {
-  background-image: url('http://res.cloudinary.com/narration/image/upload/v1452628046/Narrated_logo_dkc3ey.png');
-  width: 136px;
-  height:34px;
-  margin-top: 15px;
+  background-image: url('http://res.cloudinary.com/narration/image/upload/v1452637738/narratedorglogo.png');
+  width: 211px;
+  height:52px;
+  margin-top: 5px;
+  padding: 6px;
   display: block;
   background-size: 100%;
   margin-right: 5px;
-  margin-left: 15px;
+  margin-left: 30px;
 }
 
 .logo:hover {
   background-position-x: 0px; 
-  background-position-y: 34px; 
+  background-position-y:52px; 
 }
 
 a {
