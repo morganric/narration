@@ -1,4 +1,10 @@
 
+		<% unless current_user %>
+		<div class="alert alert-dismissible alert-info">
+			  <button type="button" class="close" data-dismiss="alert">x</button>
+			  <h5 class="white"><a href="<%= new_user_registration_path %>" class="alert-link"><strong>Signup</strong></a> to start saving your listens and favourites <a href="<%= new_user_registration_path %>" class="alert-link"><strong>here</strong></a>.</h5>
+			</div>
+			<% end %>
 
 		<div class="panel panel-default hidden">
 			  <div class="panel-heading">
@@ -17,12 +23,6 @@
 		</div>
 
 
-		<% unless current_user %>
-		<div class="alert alert-dismissible alert-info">
-			  <button type="button" class="close" data-dismiss="alert">x</button>
-			  <h5 class="white"><a href="<%= new_user_registration_path %>" class="alert-link"><strong>Signup</strong></a> to start saving your listens and favourites <a href="<%= new_user_registration_path %>" class="alert-link"><strong>here</strong></a>.</h5>
-			</div>
-			<% end %>
 
 
 		<div class="panel panel-default hidden">

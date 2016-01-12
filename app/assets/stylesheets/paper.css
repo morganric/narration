@@ -40,12 +40,6 @@ a {
   border-color: #4caf50 !important ;
 }
 
-  body {
-    content: '';
-    /*background-image: url('http://res.cloudinary.com/narration/image/upload/v1452350191/space_jddngw.jpg') !important;
-    background-size: cover;*/
-    background-color: #eee !important;
-  }
 
   hr {
     border-top: 1px solid #ddd !important;

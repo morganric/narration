@@ -19,7 +19,17 @@
     <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
       <%= javascript_include_tag "paper" %>
     <%= yield(:page_javascript) if content_for?(:page_javascript) %>
+    <style type="text/css">
 
+      body {
+    content: '';
+    /*background-image: url('http://res.cloudinary.com/narration/image/upload/v1452350191/space_jddngw.jpg') !important;
+    background-size: cover;*/
+    background-color: #eee !important;
+  }
+
+
+    </style>
   </head>
   <body>
   <header>
@@ -27,6 +37,7 @@
     </header>
     <main role="main" style="margin-top:60px;">
       <%= render 'layouts/messages' %>
+
       <div class="container">
         <br/>
         <%= yield %>
