@@ -30,6 +30,10 @@ a {
   color: #4caf50 !important;
 }
 
+.alert a {
+  color: white !important;
+}
+
 .nav-pills > li.active > a, .pagination > .active > a {
   background-color: #4caf50 !important;
   color: white !important;
