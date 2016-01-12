@@ -10,7 +10,7 @@
 }
 
 .nav-filter li.active {
-  text-decoration: underline;
+  font-weight: bold;
 }
 
 .btn {
@@ -24,7 +24,7 @@
   background-image: url('http://res.cloudinary.com/narration/image/upload/v1452637738/narratedorglogo.png');
   width: 211px;
   height:52px;
-  margin-top: 5px;
+  margin-top: 6px;
   padding: 6px;
   display: block;
   background-size: 100%;
