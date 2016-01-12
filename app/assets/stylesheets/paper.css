@@ -5,6 +5,20 @@
  *= require paper/bootswatch
 */
 
+.logo {
+  background-image: url('http://res.cloudinary.com/narration/image/upload/v1452628046/Narrated_logo_dkc3ey.png');
+  width: 160px;
+  height:40px;
+  margin-top: 10px;
+  display: block;
+  background-size: 100%;
+}
+
+.logo:hover {
+  background-position-x: 0px; 
+  background-position-y: 40px; 
+}
+
   body {
     content: '';
     /*background-image: url('http://res.cloudinary.com/narration/image/upload/v1452350191/space_jddngw.jpg') !important;
