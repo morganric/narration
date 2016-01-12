@@ -5,6 +5,13 @@
  *= require paper/bootswatch
 */
 
+.btn {
+  color: white !important;
+}
+.btn-default {
+  color: grey !important;
+}
+
 .logo {
   background-image: url('http://res.cloudinary.com/narration/image/upload/v1452628046/Narrated_logo_dkc3ey.png');
   width: 160px;
