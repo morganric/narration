@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :posts
 
   get "posts/:id/download", :to => 'posts#download', as: :post_download
+  get "p/:id", :to => 'posts#short', as: :short
 
   post 'user_favs' => 'user_favs#create', :as => 'user_favs'
   delete 'user_favs' => 'user_favs#destroy', :as => 'delete_user_favs'

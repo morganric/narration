@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [ :download, :miniembed, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
+  before_action :set_post, only: [ :short, :download, :miniembed, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
   before_filter :authenticate_user!,  except: [:index, :miniembed, :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest, :plays]
    before_action :admin_only, :except => [:oembed, :embed, :miniembed, :destroy, :show, :page, :popular, :tag,
@@ -59,9 +59,11 @@ after_filter :allow_iframe
     unless @post.listeners.blank?
       @posts = @post.listeners.first.favourites.where(:hidden => false).where.not(id: @post.id).page params[:page]
     end
-
-
   end
+
+  def short
+    redirect_to user_post_url(id: @post.slug, user_id: @post.user.name)
+  end 
 
   def oembed
     @url = params[:url]

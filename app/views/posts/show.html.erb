@@ -219,9 +219,9 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <div class="panel-body">
 
 <ul class="nav social" style="padding-left:40px;">
-  <li><%= tweet_button(count: 'inline', :url => post_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 80)}") %></li>
+  <li><%= tweet_button(count: 'inline', :url => short_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 80)}") %></li>
   <li style="postion:absolute; top:-7px;">
-    <%= like_button("791234167672701", send: true, :href => post_url( :id => @post.id), layout: :button) %></li>
+    <%= like_button("791234167672701", send: true, :href => short_url( :id => @post.id), layout: :button) %></li>
   
   </ul>
 
@@ -289,7 +289,7 @@ $("#jquery_jplayer_audio_1").jPlayer({
 
       $("#jquery_jplayer_audio_1").jPlayer('play', <%= @post.start_time %>);
 
-      
+
 
       
 
