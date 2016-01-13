@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113185258) do
+ActiveRecord::Schema.define(version: 20160113213528) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160113185258) do
     t.integer  "downloads",    default: 0
     t.integer  "start_time",   default: 0
     t.string   "type_of"
+    t.integer  "end_time",     default: 0
   end
 
   create_table "profiles", force: :cascade do |t|
