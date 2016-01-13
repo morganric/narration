@@ -197,9 +197,12 @@ $(document).ready(function(){
         title: "",
         m4a: "<%=raw @post.audio_link %>"
       });
+
     },
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");
+      $("#jquery_jplayer_audio_1").jPlayer('play', <%= @post.start_time %>);
+
     },
     pause: function(){
       $(this).jPlayer('pause');

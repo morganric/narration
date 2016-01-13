@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109220319) do
+ActiveRecord::Schema.define(version: 20160113185258) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20160109220319) do
     t.string   "provider"
     t.string   "provider_url"
     t.integer  "downloads",    default: 0
+    t.integer  "start_time",   default: 0
+    t.string   "type_of"
   end
 
   create_table "profiles", force: :cascade do |t|

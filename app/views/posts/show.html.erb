@@ -286,7 +286,10 @@ $("#jquery_jplayer_audio_1").jPlayer({
         title: "<%= @post.title %>",
         m4a: "<%= @post.audio || @post.audio_link %>"
       });
-      $("#jquery_jplayer_audio_1").jPlayer('play');
+
+      $("#jquery_jplayer_audio_1").jPlayer('play', <%= @post.start_time %>);
+
+      
 
       setTimeout(
         function() 
@@ -353,8 +356,14 @@ $("#jquery_jplayer_audio_1").jPlayer({
     }
   });
 
+  
 
   $('.jp-play').on('click', function(){
+
+
+ 
+
+    // $("#jquery_jplayer_audio_1").jPlayer('play');
      // $.post("/posts/<%= @post.id %>/play");
      // <% unless current_user.blank? %>
      //      $.ajax({

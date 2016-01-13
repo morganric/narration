@@ -29,14 +29,18 @@
           <div class="form-inputs well">
             <h3>Admin</h3>
             <%= f.input :title %>
-            <%= f.input :slug, as: :hidden %>
+             <%= f.input :start_time %>
             <%= f.input :plays%>
              <%= f.label :banner %>
             <%= f.file_field :banner %>
+             <%= f.input :featured %>
+             <%= f.input :hidden %>
+             <%= f.label :type_of %>
+             <%= f.select :type_of, ["podcast", "narration", "audiobook"], include_blank: false %>
             <br/>
             
-            <%= f.input :hidden %>
-            <%= f.input :featured %>
+            
+            <%= f.input :slug, as: :hidden %>
             <%= f.input :html,  as: :hidden %>
             <%= f.input :body,  as: :hidden %>
             <%= f.input :user_id,  as: :hidden %>
