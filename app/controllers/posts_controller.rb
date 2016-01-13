@@ -57,8 +57,9 @@ after_filter :allow_iframe
   def show
 
     unless @post.listeners.blank?
-      @posts = @post.listeners.first.favourites.where(:hidden => false).page params[:page]
+      @posts = @post.listeners.first.favourites.where(:hidden => false).where.not(id: @post.id).page params[:page]
     end
+
 
   end
 
