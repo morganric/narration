@@ -55,6 +55,7 @@
         <%= link_to truncate(@post.title, length: 45), user_post_path(id: @post, user_id: @post.user.name), target: "_blank" %>
       </h4>
 
+      <h5 class="hidden">
           <% unless @post.author.blank? %>
      
             by <%= link_to @post.author, author_path(author: @post.author), target: "_blank" %> 
