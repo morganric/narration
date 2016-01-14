@@ -25,6 +25,8 @@
   </div>
    <div class="pull-right" style="padding:5px; background-color:white; height:70px;">
         <h4 style="margin-bottom:0px;">
+          <h5 class="hidden">
+          <h5 class="hidden">
       <%= link_to image_tag("http://res.cloudinary.com/narration/image/upload/t_media_lib_thumb/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png", style: "width:60px; "), root_path, class: '', target: "_blank" %>
 
            
@@ -53,7 +55,6 @@
         <%= link_to truncate(@post.title, length: 45), user_post_path(id: @post, user_id: @post.user.name), target: "_blank" %>
       </h4>
 
-          <h5 class="hidden">
           <% unless @post.author.blank? %>
      
             by <%= link_to @post.author, author_path(author: @post.author), target: "_blank" %> 
