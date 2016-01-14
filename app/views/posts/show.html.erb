@@ -37,7 +37,7 @@
         <h4 class="modal-title" id="myModalLabel">Embed: <%= @post.title %></h4>
       </div>
       <div class="modal-body">
-        <iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="350"></iframe>
+        <iframe src="<%= preview_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="350"></iframe>
         <br>
 
         <textarea cols="60"  id='fe_text' rows="3"><iframe src="<%= embed_url(:user_id => @post.user.name, :id => @post) %>" frameborder="none" width="500" height="350"></iframe><br/><a href="<%= user_post_url(:user_id => @post.user.profile.slug, :id => @post.slug) %>" target="_blank"><%= @post.title %></a> via <a href="<%= vanity_profile_url(:id => @post.user.profile.slug) %>" target="_blank"><%= @post.user.profile.display_name || @post.user.name %> </a> on <a href="<%= root_url %>" target="_blank">Readio</a></textarea>
@@ -141,6 +141,10 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
     <% if current_user.try(:admin?)  %>
 
       <label class='label label-warning'><i class="glyphicon glyphicon-download" ></i> <%= pluralize(@post.downloads, 'download') %>
+      </label>&nbsp;
+
+      <label class='label label-primary'>
+      <i class="glyphicon glyphicon-menu-left"></i>/<i class="glyphicon glyphicon-menu-right"></i> <%= pluralize(@post.embeds, 'embed') %>
       </label>&nbsp;
     
     <% end %>

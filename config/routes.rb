@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/tagged/:tag', to: 'posts#tag', via: [:get, :post], :as => :tag
   post '/posts/:id/play' => 'posts#plays', as: :post_play
   get '/:user_id/:id/embed', :to => "posts#embed", as: :embed
+  get '/:user_id/:id/preview', :to => "posts#preview", as: :preview
   get '/:user_id/:id/popout', :to => "posts#popout", as: :popout
   get '/:user_id/:id/player', :to => "posts#player", as: :player
   get '/:user_id/:id/miniembed', :to => "posts#miniembed", as: :miniembed

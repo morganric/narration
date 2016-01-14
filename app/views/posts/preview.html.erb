@@ -46,7 +46,7 @@
 <div class="bigembed panel" style="margin:5px; padding:5px;">
 
 <div class="panel-body">
-          <%= link_to cl_image_tag(@post.image.url(:square) || @post.user.profile.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: " pull-left", style: "margin-right: 10px; margin-bottom: 0px; width:125px;"), user_post_path(id: @post, user_id: @post.user.name), target: "_blank" %>
+          <%= link_to cl_image_tag(@post.image.url(:thumbnail) || @post.user.profile.image.url(:thumbnail) || "http://res.cloudinary.com/narration/image/upload/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png",  :crop => :scale , class: " pull-left", style: "margin-right: 10px; margin-bottom: 0px; width:125px;"), user_post_path(id: @post, user_id: @post.user.name), target: "_blank" %>
   
          
       <h4>

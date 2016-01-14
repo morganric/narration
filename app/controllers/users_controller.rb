@@ -7,11 +7,13 @@ class UsersController < ApplicationController
     authorize User
 
     @plays = 0
+    @embeds = 0
 
     @posts = Post.all
 
     @posts.each do |post|
         @plays = @plays.to_i + post.plays.to_i
+        @embeds = @embeds.to_i + post.embeds.to_i
     end
 
     @favs = UserFav.all
