@@ -28,6 +28,7 @@
 
 
 
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -146,6 +147,11 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
       <label class='label label-primary'>
       <i class="glyphicon glyphicon-menu-left"></i>/<i class="glyphicon glyphicon-menu-right"></i> <%= pluralize(@post.embeds, 'embed') %>
       </label>&nbsp;
+
+        <label class='label label-primary hidden'>
+      <i class="fa fa-twitter"></i>
+<%= @results.count %>
+      </label>
     
     <% end %>
   <% end %>      
@@ -155,6 +161,10 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <i class="glyphicon glyphicon-tag" ></i>&nbsp;
   <%= link_to "#{tag}", tag_path(tag: tag), :class=>"white"%></label>&nbsp;
 <% end %>
+
+
+
+
 </h6>
 </p>
 

@@ -26,6 +26,7 @@ gem "embedly"
 gem 'jplayer-rails'
 gem 'maktoub'
 gem 'curbit' 
+gem 'twitter' 
 
 group :development, :test do
   gem 'byebug'

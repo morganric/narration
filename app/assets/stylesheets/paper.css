@@ -47,6 +47,26 @@
   background-position-y:52px; 
 }
 
+
+.logo-small {
+  background-image: url('http://res.cloudinary.com/narration/image/upload/v1452637738/narratedorglogo.png');
+  width: 160px;
+  height:39px;
+  margin-top: 6px;
+  padding: 6px;
+  display: block;
+  background-size: 100%;
+  margin-top: 7px;
+    margin-right: 7px;
+    margin-bottom: 7px;
+    margin-left: 15px
+}
+
+.logo-small:hover {
+  background-position-x: 0px; 
+  background-position-y:39px; 
+}
+
 a {
   color: #4caf50 !important;
 }

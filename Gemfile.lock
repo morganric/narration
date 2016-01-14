@@ -56,6 +56,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    buftok (0.2.0)
     builder (3.2.2)
     byebug (8.2.1)
     capybara (2.5.0)
@@ -108,6 +109,7 @@ GEM
       json
       oauth
       querystring
+    equalizer (0.0.11)
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
@@ -118,6 +120,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.6.1)
       i18n (~> 0.5)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
     formatador (0.2.5)
     friendly_id (5.1.0)
@@ -149,8 +153,11 @@ GEM
       tilt
     high_voltage (2.4.0)
     htmlentities (4.3.4)
+    http (0.6.3)
+      http_parser.rb (~> 0.6.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    http_parser.rb (0.6.0)
     hub (1.12.4)
     i18n (0.7.0)
     jbuilder (2.3.2)
@@ -187,11 +194,15 @@ GEM
       nokogiri
       premailer-rails
       rails (>= 4.0.0)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
+    multipart-post (2.0.0)
+    naught (1.0.0)
     nenv (0.2.0)
     netrc (0.10.3)
     nokogiri (1.6.7)
@@ -313,6 +324,7 @@ GEM
     simple_form (3.2.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simple_oauth (0.3.0)
     slop (3.6.0)
     social-buttons (0.3.9)
       rails (>= 3.0.0)
@@ -337,6 +349,17 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    twitter (5.13.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
+      http (~> 0.6.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     twitter-bootswatch-rails (3.3.4.0)
       execjs (~> 2.3, >= 2.3.0)
       less-rails (~> 2.4)
@@ -427,6 +450,7 @@ DEPENDENCIES
   sqlite3
   therubyracer
   thin
+  twitter
   twitter-bootswatch-rails (~> 3.3.4)
   twitter-bootswatch-rails-helpers
   uglifier (>= 1.3.0)
