@@ -60,15 +60,6 @@ after_filter :allow_iframe
       @posts = @post.listeners.first.favourites.where(:hidden => false).where.not(id: @post.id).page params[:page]
     end
 
-  
-    @client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "WEEjsCutsC9zZc18oT48y4InW"
-      config.consumer_secret     = "7kadn2WN1MWqicMZKXDzycCqhnscrAOWsPgEYfOBvO9IH7fBUP"
-      config.access_token        = "16663910-RiT45kEy0w703fXXCGn8ZoTKuCfQL23DhviKRbGUX"
-      config.access_token_secret = "q7gw1Ptw2Dahix2hgAXk1hZrADCSxU3sw91TQaLXyt4jf"
-    end
-
-    @results = @client.search("#{short_url(@post.id)}")
     
   end
 
