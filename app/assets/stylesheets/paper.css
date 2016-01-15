@@ -5,6 +5,10 @@
  *= require paper/bootswatch
 */
 
+.label {
+  display: inline-block !important; 
+}
+
 .nav-filter {
   padding-bottom: 10px !important;
 }
