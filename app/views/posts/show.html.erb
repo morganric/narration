@@ -148,10 +148,10 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
       <i class="glyphicon glyphicon-menu-left"></i>/<i class="glyphicon glyphicon-menu-right"></i> <%= pluralize(@post.embeds, 'embed') %>
       </label>&nbsp;
 
-        <label class='label label-primary hidden'>
+       <!--  <label class='label label-primary hidden'>
       <i class="fa fa-twitter"></i>
-<%= @results.count %>
-      </label>
+<%#= @results.count %>
+      </label> -->
     
     <% end %>
   <% end %>      
