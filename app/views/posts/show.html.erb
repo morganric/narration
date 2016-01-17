@@ -179,19 +179,25 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 
 <% end %>
 
+
+<div class="recommend">
 <br/>
  <% unless @posts.blank? %>
  <h4>Listeners also enjoyed:</h4>
  <hr/>
  <%= render 'shared/posts', :posts => @posts %>
-
 <% end %>
 </div>
+</div>
 <div class="col-md-4 text-center">
-  <br/>
+<div class="cover-image">
+  
+    <br/>
 
-  <%= image_tag @post.image.url(:square) || @post.user.profile.image.url(:square) || "http://res.cloudinary.com/narration/image/upload/v1452630234/Narrated_Square_uixyok.png", class: "img-responsive" %>
+  <%= image_tag @post.image.url(:square) || @post.user.profile.image.url(:square) || "http://res.cloudinary.com/narration/image/upload/v1452630234/Narrated_Square_uixyok.png", class: "img-responsive " %>
   <br/>
+</div>
+
 
   <div class="btn-group btn-group-justified">
     <% if user_signed_in? %>

@@ -21,6 +21,10 @@
     width: 90% !important;
   }
 
+  .recommend, .cover-image {
+    display: none !important;
+  }
+
   }
 
 
