@@ -17,11 +17,11 @@
     font-size: 18px !important; 
   }
   
-  .jp-flat-audio {
-    width: 90% !important;
+  #jp_container_audio_1, .jp-flat-audio, .jp-seek-bar, .jp-bar {
+    width: 75% !important;
   }
 
-  .recommend, .cover-image {
+  .recommend, .cover-image  {
     display: none !important;
   }
 
