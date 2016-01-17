@@ -5,6 +5,10 @@
  *= require paper/bootswatch
 */
 
+.transparent {
+  color: transparent !important;
+}
+
 .label {
   display: inline-block !important; 
 }
