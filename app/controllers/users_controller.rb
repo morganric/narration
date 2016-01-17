@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     @plays = 0
     @embeds = 0
+    @listens = Listen.all.count
 
     @posts = Post.all
 
