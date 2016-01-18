@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   after_action :verify_authorized
 
   def index
-    @users = User.all
+    @users = User.all.page params[:page]
     authorize User
 
     @plays = 0
