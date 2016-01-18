@@ -6,7 +6,7 @@ paginates_per 5
 extend FriendlyId
 friendly_id :title, use: :slugged
 
-   before_validation :set_default_title
+before_validation :set_default_title
 
 mount_uploader :image, ImageUploader
 mount_uploader :banner, ImageUploader
@@ -31,6 +31,16 @@ validates :audio_link, presence: true, unless: ->(user){user.audio.present?}
 
 validates :url, :format => URI::regexp(%w(http https)), :allow_blank => true
 validates :audio_link, :format => URI::regexp(%w(http https))
+
+validate :file_extenstion
+
+
+def file_extenstion
+
+	if	File.extname(URI.parse(self.audio_link).path) != ".mp3"
+	  errors.add(:audio_link, "must be .mp3 url")
+    end
+end
 
 def should_generate_new_friendly_id?
   new_record? || slug.blank?
