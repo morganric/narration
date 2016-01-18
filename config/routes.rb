@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+   
   resources :listens
   mount Upmin::Engine => '/admin'
   mount Maktoub::Engine => '/news'
