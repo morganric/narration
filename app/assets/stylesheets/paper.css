@@ -7,6 +7,10 @@
 
 /* Small Device */
 
+.modal-header {
+  border-bottom:1px lightgrey solid !important;
+}
+
 .index {
   font-size: 40px;
 }
