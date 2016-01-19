@@ -11,9 +11,9 @@
 
 			<li class="panel">
 
-      <span class="pull-right hidden" style="margin-right:25px;" >
-      <h2><%= index+x+1 %></h2>
-    </span>
+      <div class="pull-right hidden index" style="margin-right:25px;" >
+      <strong><%= index+x+1 %></strong>
+    </div>
 
         <div class="panel-body">
           <%= link_to cl_image_tag(post.image.url(:thumb) || post.user.profile.image.url(:thumb) || "http://res.cloudinary.com/narration/image/upload/v1452895801/narratedlogo_dmt0jj.png",  :crop => :scale , class: "img-thumbnail pull-left", style: "margin-right: 10px; width:100px;"), user_post_path(id: post, user_id: post.user.name) %>
