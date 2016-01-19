@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
-  validates_exclusion_of :name, :in => %w( inboxes message discussions facebook tedx featured users feeds photos videos items oembed api facebook new popular featured favicon superuser 
+  validates_exclusion_of :name, :in => %w( inboxes message discussions facebook tedx users feeds photos videos items oembed api facebook new popular featured favicon superuser 
     pages partners categories category creators platforms media posts authors types providers tagged ), :message => "Sorry, try something else"
 
 
