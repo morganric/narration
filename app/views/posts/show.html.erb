@@ -336,6 +336,16 @@ $("#jquery_jplayer_audio_1").jPlayer({
 
 
       
+       setTimeout(
+        function() 
+        {
+          //do something special
+          $.post("/posts/<%= @post.id %>/play");
+
+          //popup share modal
+          $('#shareModal').modal('show');
+
+        }, 120000);
 
       
       
