@@ -26,7 +26,7 @@
   }
   
   #jp_container_audio_1, .jp-bar {
-    width: 50% !important;
+    /*width: 50% !important;*/
   }
 
   .recommend, .cover-image  {
