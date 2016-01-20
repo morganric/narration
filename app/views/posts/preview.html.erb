@@ -201,6 +201,17 @@ $(document).ready(function(){
       $(this).jPlayer("pauseOthers");
       $("#jquery_jplayer_audio_1").jPlayer('play', <%= @post.start_time %>);
 
+      setTimeout(
+        function() 
+        {
+          //do something special
+          $.post("/posts/<%= @post.id %>/play");
+
+          //popup share modal
+          $('#shareModal').modal('show');
+
+        }, 120000); 
+
     },
     pause: function(){
       $(this).jPlayer('pause');
@@ -229,7 +240,7 @@ $(document).ready(function(){
 
         $('.jp-play').on('click', function(e){
           e.preventDefault();
-          $.post("/posts/<%= @post.id %>/play");
+          // $.post("/posts/<%= @post.id %>/play");
           console.log('play');
 
         });
