@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-   has_many :posts
+   has_many :posts, dependent: :destroy
 
    has_one :profile, dependent: :destroy
    has_many :listens, :dependent => :destroy

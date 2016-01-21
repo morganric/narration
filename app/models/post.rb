@@ -34,6 +34,13 @@ validates :audio_link, :format => URI::regexp(%w(http https))
 
 validate :file_extenstion
 
+def hot_score
+  self.plays.to_i/100 + self.favourites.count.to_i + 2 * self.embeds.to_i
+end
+
+def self.sorted_by_score
+  Post.all.sort_by(&:hot_score)
+end
 
 def file_extenstion
 

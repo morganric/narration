@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-   
+  get "hot" => "posts#hot", as: :hot
   resources :listens
   mount Upmin::Engine => '/admin'
   mount Maktoub::Engine => '/news'
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "provider/:provider" => "posts#provider", as: :provider
   get "featured" => "posts#featured", as: :featured
   get "latest" => "posts#latest", as: :latest
+
 
   resources :profiles
   get '/tagged/:tag', to: 'posts#tag', via: [:get, :post], :as => :tag

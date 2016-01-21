@@ -1,0 +1,48 @@
+
+<h1 class="text-center black hidden">
+<img src="http://res.cloudinary.com/narration/image/upload/t_media_lib_thumb/v1450280814/Screen_Shot_2015-12-16_at_16.35.58_cbntzj.png" style="width:50px">
+	narrated.org
+<br/>
+<small>narrated news, blogs and stories</small>
+</h1>
+<br/>
+
+<div class="col-md-12">
+<br/>
+	<div class="col-md-8">
+
+
+<ul class="nav-filter pull-right" id="">
+Sort by: 
+  <li ><a href="<%= root_url %>">
+    <!-- <i class="glyphicon glyphicon-play" ></i> --> Popular
+  </a></li> | 
+  <li class="active" ><a href="<%= latest_url %>" >
+  <!-- <i class="glyphicon glyphicon-time" ></i> --> Latest
+  </a></li>
+
+</ul>
+
+
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active in" id="popular">
+<br/>
+
+	<%= render 'shared/posts', :posts => @posts %>
+	</div>
+	<div class="tab-pane fade" id="new">
+<br/>
+	
+	</div>
+
+</div>
+	</div>
+	<div class="col-md-4">
+		<%= render 'sidebar' %>
+		
+	</div>
+
+</div>
+
+
+

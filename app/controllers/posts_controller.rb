@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [ :preview, :short, :download, :miniembed, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
-  before_filter :authenticate_user!,  except: [ :preview, :short, :index, :miniembed, :show, :featured, :embed, 
+  before_filter :authenticate_user!,  except: [ :hot, :preview, :short, :index, :miniembed, :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest, :plays]
-   before_action :admin_only, :except => [:preview, :short, :oembed, :embed, :miniembed, :destroy, :show, :page, :popular, :tag,
+   before_action :admin_only, :except => [ :hot, :preview, :short, :oembed, :embed, :miniembed, :destroy, :show, :page, :popular, :tag,
                 :edit, :index, :favourites, :update, :featured, :popout, :latest, :provider, :author, :plays]
 
    require 'embedly'
@@ -16,6 +16,7 @@ after_filter :allow_iframe
   # GET /posts.json
   def index
     @posts = Post.where(hidden: false).order('plays DESC').page params[:page]
+    
     @featured = Post.where(hidden: false).where(:featured => true).order('created_at DESC').limit(3)
     @new = Post.where(hidden: false).order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10)
@@ -27,6 +28,14 @@ after_filter :allow_iframe
     @posts = Post.where(hidden: false).order('created_at DESC').page params[:page]
     @top = ActsAsTaggableOn::Tag.most_used(10) 
     @listens = Listen.all.order('created_at DESC')
+  end
+
+  def hot
+    @posts = Post.where(hidden: false).sorted_by_score.reverse
+    @posts = Kaminari.paginate_array(@posts).page(1).per(5)
+    @featured = Post.where(hidden: false).where(:featured => true).order('created_at DESC').limit(3)
+    @listens = Listen.all.order('created_at DESC')
+     @top = ActsAsTaggableOn::Tag.most_used(10)
   end
 
   def tag
