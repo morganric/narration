@@ -32,7 +32,7 @@ after_filter :allow_iframe
 
   def hot
     @posts = Post.where(hidden: false).sorted_by_score.reverse
-    @posts = Kaminari.paginate_array(@posts).page(1).per(5)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
     @featured = Post.where(hidden: false).where(:featured => true).order('created_at DESC').limit(3)
     @listens = Listen.all.order('created_at DESC')
      @top = ActsAsTaggableOn::Tag.most_used(10)
