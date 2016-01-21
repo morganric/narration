@@ -35,7 +35,7 @@ validates :audio_link, :format => URI::regexp(%w(http https))
 validate :file_extenstion
 
 def hot_score
-  self.plays.to_i/10 + self.favourites.count.to_i + 2 * self.embeds.to_i
+  (self.plays.to_i/25).to_f + self.favourites.count.to_f + 5 * self.embeds.to_f
 end
 
 def self.sorted_by_score
