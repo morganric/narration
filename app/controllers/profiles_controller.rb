@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
 
   def listens
 
-    @listens = @profile.user.listenings.where(hidden: false).page params[:page]
+    @posts = @profile.user.listenings.where(hidden: false).page params[:page]
 
   end
 
