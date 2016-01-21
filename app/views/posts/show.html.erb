@@ -70,10 +70,10 @@
     <div class="modal-content">
       <div class="modal-header" >
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Enjoying <%= @post.title %>?</h4>
+        <h4 class="modal-title" id="myModalLabel">Enjoying listening to - <%= @post.title %>?</h4>
       </div>
       <div class="modal-body">
-          <h5>Why not share with your followers on twitter...</h5>
+          <h5>Share with your followers on twitter...</h5>
 
           <span class="text-center"><%= tweet_button(count: 'inline', :url => short_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 80)}", size: "large") %></span>  
         </div> 
