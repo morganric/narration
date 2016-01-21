@@ -25,9 +25,7 @@
     font-size: 18px !important; 
   }
   
-  #jp_container_audio_1, .jp-bar {
-    /*width: 50% !important;*/
-  }
+ 
 
   .recommend, .cover-image  {
     display: none !important;
