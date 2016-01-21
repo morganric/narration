@@ -75,7 +75,7 @@
       <div class="modal-body">
           <h5>Share with your followers on twitter...</h5>
 
-          <span class="text-center"><%= tweet_button(count: 'inline', :url => short_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 80)}", size: "large") %></span>  
+          <span class="text-center"><%= tweet_button(count: 'inline', :url => short_url( :id => @post.id), via: "narrated_org", text: "Listening to #{truncate(@post.title, length: 80)}", size: "large") %></span>  
         </div> 
  <div class="modal-footer"> 
  <a href="#" class="btn btn-default" data-dismiss="modal">Close</a> 
@@ -263,7 +263,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <div class="panel-body">
 
 <ul class="nav social" style="padding-left:40px;">
-  <li><%= tweet_button(count: 'inline', :url => short_url( :id => @post.id), via: "narrated_org", text: "Listen to #{truncate(@post.title, length: 80)}") %></li>
+  <li><%= tweet_button(count: 'inline', :url => short_url( :id => @post.id), via: "narrated_org", text: "Listening to #{truncate(@post.title, length: 80)}") %></li>
   <li style="postion:absolute; top:-7px;">
     <%= like_button("791234167672701", send: true, :href => short_url( :id => @post.id), layout: :button) %></li>
   
