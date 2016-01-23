@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get "hot" => "posts#hot", as: :hot
+  
   resources :listens
   mount Upmin::Engine => '/admin'
   mount Maktoub::Engine => '/news'
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
 
   get '/:user_id/:id', to: 'posts#show', :as =>  :user_post
 
+post "search" => "posts#search", as: :search
 
   authenticated :user do
     root to: "posts#index", as: :authenticated_root

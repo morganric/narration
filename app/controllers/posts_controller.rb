@@ -2,14 +2,17 @@ class PostsController < ApplicationController
   before_action :set_post, only: [ :preview, :short, :download, :miniembed, :show, :edit, :update, :destroy, :plays, :embed, :popout, :player]
   before_filter :authenticate_user!,  except: [ :hot, :preview, :short, :index, :miniembed, :show, :featured, :embed, 
                     :tag, :author, :provider, :popout, :latest, :plays]
-   before_action :admin_only, :except => [ :hot, :preview, :short, :oembed, :embed, :miniembed, :destroy, :show, :page, :popular, :tag,
+   before_action :admin_only, :except => [:search, :hot, :preview, :short, :oembed, :embed, :miniembed, :destroy, :show, :page, :popular, :tag,
                 :edit, :index, :favourites, :update, :featured, :popout, :latest, :provider, :author, :plays]
 
-   require 'embedly'
+
+  require 'embedly'
   require 'json'
   include Curbit::Controller
 
 after_filter :allow_iframe
+
+ skip_before_filter :verify_authenticity_token  
 
 
   # GET /posts
@@ -48,6 +51,16 @@ after_filter :allow_iframe
 
   def featured
     @posts = Post.where(hidden: false).where(:featured => true).order('created_at DESC')
+  end
+
+  def search
+    @search = params["q"]
+    @posts = Post.where("title like ?", "%#{@search}%").page params[:page] 
+    @tags = ActsAsTaggableOn::Tag.where("name like ?", "%#{@search}%")
+
+    @featured = Post.where(hidden: false).where(:featured => true).order('created_at DESC').limit(3)
+     @top = ActsAsTaggableOn::Tag.most_used(10) 
+    @listens = Listen.all.order('created_at DESC')
   end
 
 
