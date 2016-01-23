@@ -263,6 +263,6 @@ after_filter :allow_iframe
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :url, :audio, :audio_link, :summary, :image, :user_id, :slug, 
-        :plays, :banner, :tag_list, :hidden, :featured, :html, :body, :author, :author_url, :provider, :provider_url, :start_time, :type_of, :end_time)
+        :plays, :banner, :tag_list, :hidden, :featured, :html, :body, :author, :author_url, :provider, :provider_url, :start_time, :type_of, :stop_time, :end_time)
     end
 end

@@ -418,7 +418,15 @@ $("#jquery_jplayer_audio_1").jPlayer({
     }
   });
 
-  
+
+   <% if @post.stop_time != nil %>
+   $("#jquery_jplayer_audio_1").bind($.jPlayer.event.timeupdate, function(event) {
+      if(event.jPlayer.status.currentTime > <%= @post.stop_time %>) {
+        $(this).jPlayer("stop");
+      }
+    });  
+
+    <% end %>
 
   $('.jp-play').on('click', function(){
 
