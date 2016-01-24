@@ -54,7 +54,7 @@ after_filter :allow_iframe
   end
 
   def search
-    @search = params["q"]
+    @search = params["q"] || ""
     @posts = Post.where("lower(title) like ? OR lower(summary) like ?", "%#{@search.downcase}%", "%#{@search.downcase}%").where(:hidden => false).page(params[:page])
 
     @tags = ActsAsTaggableOn::Tag.where("name like ?", "%#{@search}%")
