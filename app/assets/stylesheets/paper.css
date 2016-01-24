@@ -7,7 +7,7 @@
 
 /* Small Device */
 
-input[type="text"]:focus, input:focus {
+input[type="text"]:focus, input:focus, textarea:focus {
   box-shadow: inset 0 -2px 0 #4caf50 !important;  
 
 }
@@ -19,7 +19,7 @@ input[type="checkbox"]:checked:after, input[type="checkbox"]:checked:focus
 }
 
 input[type="checkbox"]:not(:checked):after, input[type="checkbox"]:not(:checked):focus {
-   background-color: transparent; !important;
+   background-color: transparent !important;
   border-color: grey !important;
 
 }
