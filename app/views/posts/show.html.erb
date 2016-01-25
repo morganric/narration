@@ -155,7 +155,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
   <% unless @post.favourites.count == 0 %>
     
 
-  <label class='label label-info'><i class="glyphicon glyphicon-heart" ></i> <%= pluralize(@post.favourites.count, 'favourite') %>
+  <label class='label label-info'><i class="glyphicon glyphicon-heart" ></i> <%= pluralize(@post.favourites.count, 'favorite') %>
       </label>&nbsp;
       <% end %>
 
@@ -305,7 +305,7 @@ via   <%= link_to @post.user.profile.display_name, vanity_profile_path(:id => @p
 <% unless @post.favourited_by.blank? %>
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title"><i class="glyphicon glyphicon-heart"></i>  Favourited By </h3>
+    <h3 class="panel-title"><i class="glyphicon glyphicon-heart"></i>  Favorited By </h3>
   </div>
   <div class="panel-body">
     
