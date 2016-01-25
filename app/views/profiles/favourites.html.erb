@@ -3,30 +3,7 @@
 
 <div class="col-md-4 text-center">
 <br/>
-<p class="">
-  <%= image_tag @profile.image.url(:square) || "http://res.cloudinary.com/narration/image/upload/v1452895801/narratedlogo_dmt0jj.png", class: "img-responsive img-circle text-center" %>
-</p>
-
-   
-  <% if user_signed_in? %>
-    <% if current_user.try(:admin?) || current_user == @profile.user %>
-        <%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-block btn-default" %>
-    <% end %>
-  <% end %> 
-  <br/>
-  <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="glyphicon glyphicon-share-alt"></i>  Share </h3>
-        </div>
-        <div class="panel-body">
-
-      <ul class="nav social" style="padding-left:40px;">
-        <li style="postion:absolute; top:-6px;"><%= like_button("1440239169528450", send: true, :url => vanity_profile_url(id: @profile.user.name), layout: :button) %></li>
-        <li><%= tweet_button(count: 'inline', :url => vanity_profile_url(id: @profile.user.name), via: "narrated_org", text: @profile.display_name) %></li>
-        </ul>
-
-      </div>
-    </div>
+<%= render 'sidebar' %>
 
 </div>
 

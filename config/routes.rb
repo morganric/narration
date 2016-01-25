@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   mount Maktoub::Engine => '/news'
 
   get "about" => "pages#about", as: :about
+  get "feedback" => "pages#feedback", as: :feedback
   get "welcome" => "pages#welcome", as: :welcome
   get "author/:author" => "posts#author", as: :author
   get "provider/:provider" => "posts#provider", as: :provider
