@@ -1,15 +1,40 @@
 
-		<div class="alert alert-dismissible alert-success">
+		<div class="alert alert-dismissible alert-success hidden">
 			  <button type="button" class="close" data-dismiss="alert">x</button>
 			  <h5 class="white"><a href="<%= feedback_url %>" class="alert-link"><strong>Please leave us some feedback on narrated.org here.</strong></a></h5>
 			</div>
 
 		<% unless current_user %>
+
+
 		<div class="alert alert-dismissible alert-info">
 			  <button type="button" class="close" data-dismiss="alert">x</button>
 			  <h5 class="white"><a href="<%= new_user_registration_path %>" class="alert-link"><strong>Signup</strong></a> to start saving your listens and favourites to your profile.</h5>
 			</div>
 			<% end %>
+
+		<div class="panel" style="padding:10px;">
+			<div id="wufoo-z7gredf04030nv">
+				Fill out my <a href="https://narrated.wufoo.com/forms/z7gredf04030nv">online form</a>.
+				</div>
+
+				<script type="text/javascript">var z7gredf04030nv;(function(d, t) {
+				var s = d.createElement(t), options = {
+				'userName':'narrated',
+				'formHash':'z7gredf04030nv',
+				'autoResize':true,
+				'height':'356',
+				'async':true,
+				'host':'wufoo.com',
+				'header':'show',
+				'ssl':true};
+				s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+				s.onload = s.onreadystatechange = function() {
+				var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+				try { z7gredf04030nv = new WufooForm();z7gredf04030nv.initialize(options);z7gredf04030nv.display(); } catch (e) {}};
+				var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+				})(document, 'script');</script>
+		</div>
 
 		<div class="panel panel-default hidden">
 			  <div class="panel-heading">
