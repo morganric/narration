@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     get '/', to: 'profiles#show', :as =>  :vanity_profile
     get '/about', to: 'profiles#about', as: :about_profile
     get '/listens', to: 'profiles#listens', as: :listens_profile
-    get '/favourites', to: 'profiles#favourites', as: :user_favourites
+    get '/favorites', to: 'profiles#favorites', as: :user_favorites
     
   end
 
