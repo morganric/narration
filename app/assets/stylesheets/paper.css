@@ -44,38 +44,38 @@ input[type="checkbox"]:not(:checked):after, input[type="checkbox"]:not(:checked)
 
 @media  (max-width:480px) {
 
-  h2 {
-    font-size: 22px !important; 
+    h2 {
+      font-size: 22px !important; 
+    }
+
+    h4 {
+      font-size: 18px !important; 
+    }
+    
+   
+
+    .recommend, .cover-image  {
+      display: none !important;
+    }
+
+    .logo {
+    background-image: url('http://res.cloudinary.com/narration/image/upload/v1452637738/narratedorglogo.png') no-repeat !important;
+    width: 160px !important;
+    height:39px !important;
+
+    padding: 6px !important;
+    display: block !important;
+    background-size: 100% !important;
+    margin-top: 7px !important;
+      margin-right: 7px !important;
+      margin-bottom: 7px !important;
+      margin-left: 15px !important;
   }
 
-  h4 {
-    font-size: 18px !important; 
+  .logo:hover {
+    background-position-x: 0px !important; 
+    background-position-y:39px !important; 
   }
-  
- 
-
-  .recommend, .cover-image  {
-    display: none !important;
-  }
-
-  .logo {
-  background-image: url('http://res.cloudinary.com/narration/image/upload/v1452637738/narratedorglogo.png') no-repeat !important;
-  width: 160px !important;
-  height:39px !important;
-
-  padding: 6px !important;
-  display: block !important;
-  background-size: 100% !important;
-  margin-top: 7px !important;
-    margin-right: 7px !important;
-    margin-bottom: 7px !important;
-    margin-left: 15px !important;
-}
-
-.logo:hover {
-  background-position-x: 0px !important; 
-  background-position-y:39px !important; 
-}
 
 }
 
@@ -142,6 +142,8 @@ input[type="checkbox"]:not(:checked):after, input[type="checkbox"]:not(:checked)
 .logo:hover {
   background-position-x: 0px; 
   background-position-y:52px; 
+
+  background-position: 0px 52px;  
 }
 
 
