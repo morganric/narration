@@ -27,6 +27,7 @@ gem 'jplayer-rails'
 gem 'maktoub'
 gem 'curbit' 
 gem 'twitter' 
+gem "rails-settings-cached", "~> 0.4.0"
 
 group :development, :test do
   gem 'byebug'

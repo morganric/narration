@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   post "/search" => "posts#search", as: :search
   get "/search" => "posts#search"
-
+  get "settings" => "settings#index", as: :settings
+  get "settings/edit" => "settings#edit", as: :settings_edit
+  put "settings" => "settings#update", as: :settings_update
 
   resources :listens
   mount Upmin::Engine => '/admin'

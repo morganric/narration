@@ -1,0 +1,8 @@
+<h1>Settings</h1>
+<hr/>
+
+<% @settings.each do |setting| %>
+  <%= setting.var %> = <%= setting.value %>
+<% end %>
+<hr/>
+<%= link_to	'Edit', settings_edit_path, class: "btn btn-lg btn-primary" %>

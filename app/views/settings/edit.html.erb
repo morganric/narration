@@ -1,0 +1,10 @@
+<h1>Edit </h1>
+
+<%= form_tag("/settings", :method => "put") do %>
+  <% @settings.each do |setting| %>
+    <%= label_tag(setting.var, setting.var) %>
+    <%= text_field_tag(setting.var, setting.value) %>
+  <% end %>
+  <hr/>
+  <%= submit_tag("Save Changes", class: "btn btn-lg btn-primary") %>
+<% end %>
