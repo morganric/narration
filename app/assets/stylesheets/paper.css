@@ -59,7 +59,7 @@ input[type="checkbox"]:not(:checked):after, input[type="checkbox"]:not(:checked)
     }
 
     .logo {
-    background-image: url('http://res.cloudinary.com/narration/image/upload/v1452637738/narratedorglogo.png') no-repeat !important;
+    background-image: url('http://res.cloudinary.com/narration/image/upload/v1452637738/narratedorglogo.png') !important;
     width: 160px !important;
     height:39px !important;
 
@@ -126,7 +126,7 @@ input[type="checkbox"]:not(:checked):after, input[type="checkbox"]:not(:checked)
 }
 
 .logo {
-  background-image: url('http://res.cloudinary.com/narration/image/upload/v1453041606/narrated-ph-logo_ikzqqi.png')  !important; 
+  background-image: url('http://res.cloudinary.com/narration/image/upload/v1453041606/narrated-ph-logo_ikzqqi.png') ; 
   width: 311px;
   height:52px;
   margin-top: 12px;

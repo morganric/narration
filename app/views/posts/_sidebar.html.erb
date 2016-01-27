@@ -59,30 +59,42 @@
 			  <div class="panel-body" style="padding:25px;">
 
 			
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators hidden">
-  	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <% @featured[1..5].each_with_index do |featured, index| %>
-    <li data-target="#carousel-example-generic" data-slide-to="<%= index %>" class=""></li>
-    <% end %>
-  </ol>
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators hidden">
+					  	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					    <% @featured[1..2].each_with_index do |featured, index| %>
+					    <li data-target="#carousel-example-generic" data-slide-to="<%= index %>" class=""></li>
+					    <% end %>
+					  </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-    <a href="<%= short_url(@featured.first.id)  %>">
-      <img src="<%=  @featured.first.image.url(:mpu)  %>" alt="...">
-     </a>
-    </div>
-    <% @featured[1..5].each_with_index do |featured, index| %>
-    <div class="item">
-    <a href="<%= short_url(featured.id)  %>">
-      <img src="<%= featured.image.url(:mpu)  %>" alt="...">
-    </a>
-    </div>
-    <% end %>
-  </div>
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner" role="listbox">
+					    <div class="item active">
+					    <a href="<%= short_url(@featured.first.id)  %>">
+					      <img src="<%=  @featured.first.image.url(:mpu)  %>" alt="...">
+					     </a>
+					     <div class="carousel-caption">
+					         <h5 class="white"><%= link_to @featured.first.title, user_post_path(user_id: @featured.first.user.name, id: @featured.first.slug), class: "white" %>
+
+					         </h5>
+
+					      </div>
+					    </div>
+					    <% @featured[1..2].each_with_index do |featured, index| %>
+					    <div class="item">
+					    <a href="<%= short_url(featured.id)  %>">
+					      <img src="<%= featured.image.url(:mpu)  %>" alt="...">
+					    </a>
+					    <div class="carousel-caption">
+					         <h5 class="white"><%= link_to featured.title, user_post_path(user_id: featured.user.name, id: featured.slug), class: "white" %>
+
+					         </h5>
+
+					      </div>
+					    </div>
+					    <% end %>
+					  </div>
 
 			</div>
 		</div>
