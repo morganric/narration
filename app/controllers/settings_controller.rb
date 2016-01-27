@@ -1,5 +1,10 @@
 class SettingsController < ApplicationController
 
+
+  before_filter :authenticate_user!
+   before_action :admin_only
+
+
 def index
     # to get all items for render list
     @settings = Settings.all
@@ -23,6 +28,15 @@ def index
 
 	  redirect_to settings_path, :notice => 'Settings updated' # Redirect to the settings index
 	end
+
+
+  private
+
+    def admin_only
+      unless current_user.admin? 
+        redirect_to :root, :alert => "Access denied."
+      end
+    end
 
 
 end
