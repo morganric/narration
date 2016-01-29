@@ -75,7 +75,7 @@
 					    <a href="<%= short_url(@featured.first.id)  %>">
 					      <img src="<%=  @featured.first.image.url(:mpu)  %>" alt="...">
 					     </a>
-					     <div class="carousel-caption">
+					     <div class="carousel-caption hidden">
 					         <h5 class="white"><%= link_to @featured.first.title, user_post_path(user_id: @featured.first.user.name, id: @featured.first.slug), class: "white" %>
 
 					         </h5>
@@ -87,7 +87,7 @@
 					    <a href="<%= short_url(featured.id)  %>">
 					      <img src="<%= featured.image.url(:mpu)  %>" alt="...">
 					    </a>
-					    <div class="carousel-caption">
+					    <div class="carousel-caption hidden">
 					         <h5 class="white"><%= link_to featured.title, user_post_path(user_id: featured.user.name, id: featured.slug), class: "white" %>
 
 					         </h5>
