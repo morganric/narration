@@ -52,6 +52,7 @@
 			</div>
 		</div>
 
+		<% unless @featured.blank %>
 		<div class="panel panel-default ">
 			  <div class="panel-heading">
 			    <h3 class="panel-title"><%#= link_to "Featured", featured_path %> Featured</h3>
@@ -100,7 +101,7 @@
 		</div>
 
 		</div>		
-
+		<% end %>
 
 		<div class="panel panel-default hidden">
 			  <div class="panel-heading">
